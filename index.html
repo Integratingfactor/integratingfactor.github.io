@@ -1,1 +1,12 @@
-Hello World
+<html>
+  <body>
+    <script language="javaScript">
+      var win = window.open('https://if-idp.appspot.com/oauth/authorize?client_id=test.oauth2.code.client&response_type=code&redirect_uri=http://localhost');
+      function showChildURL(){
+        alert(win.location.hash);
+      }
+    </script>
+
+    <a href="javascript:showChildURL();">showChildURL</a>
+</body>
+</html>
