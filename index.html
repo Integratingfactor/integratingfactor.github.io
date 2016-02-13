@@ -15,7 +15,7 @@
 		}
 
 		// Verify that we have a token grant
-		if (params['access_token'] !== null) {
+		if (params['access_token']) {
 			alert("Login success");
 			document.getElementById("main").textContent = "Welcome User";
 		} else {
