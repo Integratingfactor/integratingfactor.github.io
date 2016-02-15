@@ -28,7 +28,7 @@
 
 		// Verify that we have a token grant
 		if (params['access_token']) {
-			document.getElementById("main").textContent = "Welcome " + params['first_name'] + params['last_name'];
+			document.getElementById("main").textContent = "Welcome " + params['first_name'] + " " + params['last_name'];
 			document.getElementById("login").remove();
 		} else {
 			document.getElementById("main").textContent = "Welcome Guest";
