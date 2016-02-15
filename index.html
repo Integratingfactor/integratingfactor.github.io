@@ -1,7 +1,7 @@
 <html>
   <body onload="checkTokenGrant()">
     <script language="javaScript">
-      var idpLogin='https://if-idp.appspot.com/oauth/authorize?client_id=test.oauth2.code.client&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
+      var idpLogin='https://if-idp.appspot.com/oauth/authorize?client_id=test.endpoint.client&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
       Element.prototype.remove = function() {
 	    this.parentElement.removeChild(this);
  	  }
@@ -28,7 +28,7 @@
 
 		// Verify that we have a token grant
 		if (params['access_token']) {
-			document.getElementById("main").textContent = "Welcome User";
+			document.getElementById("main").textContent = "Welcome " + params['first_name'] + params['last_name'];
 			document.getElementById("login").remove();
 		} else {
 			document.getElementById("main").textContent = "Welcome Guest";
