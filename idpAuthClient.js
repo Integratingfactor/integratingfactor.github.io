@@ -32,7 +32,7 @@
   function getIdpUser(param) {
     console.log('request to get ', param);
     console.log(JSON.parse(window.sessionStorage.idpUser));
-    return JSON.parse(window.sessionStorage.idpUser).param;
+    return JSON.parse(window.sessionStorage.idpUser)[param];
   }
 
   function idpLogout(){
