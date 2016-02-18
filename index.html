@@ -23,9 +23,11 @@
       }
       function startUp() {
       	if (window.sessionStorage.idpAuth == null) {
+      		console.log("Found authentication object: ", window.sessionStorage.idpAuth);
       		$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
 			$("#action").html('<a href="javascript:logout();">Logout</a>');
       	} else {
+      		console.log("Did not find any authentication object");
 			$("#main").html("Welcome Guest");
 			$("#action").html('<a href="javascript:login();">Login</a>');
 			checkTokenGrant();
@@ -53,6 +55,7 @@
 				}
 			})
 			.done(function (data) {
+				console.log("Storing session data: ", data);
 				window.sessionStorage.idpAuth=data;
 				goHome();
 			});
