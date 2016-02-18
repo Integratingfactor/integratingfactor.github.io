@@ -1,4 +1,4 @@
-(function ($) {
+// (function ($) {
   var clientId='test.endpoint.client';
   var clientSecret='';
   var clientAuth=btoa(clientId+':'+clientSecret);
@@ -74,4 +74,4 @@
       requestAccessToken();
     }
   }
-}(this));
+// }(this));
