@@ -25,48 +25,46 @@
       	window.location='http://'+window.location.hostname+window.location.pathname;
       }
       function startUp() {
-        var idpAuth = window.sessionStorage.getItem('idpAuth');
-      	console.log(idpAuth);
+        var idpAccessToken = window.sessionStorage.idpAccessToken;
+      	console.log(idpAccessToken);
       	// if (typeof window.sessionStorage.idpAuth !== "undefined" && window.sessionStorage.idpAuth !== null) {
-        if (typeof idpAuth != "undefined" && idpAuth != "null") {
-      		console.log("Found authentication object: ", idpAuth);
-      		$("#main").html("Welcome " + idpAuth['given_name'] + " " + idpAuth['family_name']);
-			    $("#action").html('<a href="javascript:logout();">Logout</a>');
-      	} else {
-      		console.log("Did not find any authentication object");
-		    	$("#main").html("Welcome Guest");
-	    		$("#action").html('<a href="javascript:login();">Login</a>');
-	    		checkTokenGrant();
+          validateToken(window.sessionStorage.idpAccessToken);
       	}
+      }
+      function validateToken(accessToken) {
+        if (accessToken && typeof accessToken != "undefined" && accessToken != "null") {
+          $.ajax({
+            url:idpHost+'/oauth/check_token',
+            type: "POST",
+            headers: {
+              Authorization: "Basic " + clientAuth
+            },
+            data: {
+              token: accessToken
+            }
+          })
+          .done(function (data) {
+            console.log("validated token: ", JASON.stringify(data);
+            // window.sessionStorage.idpAuth=data;
+            $("#main").html("Welcome " + idpAuth['given_name'] + " " + idpAuth['family_name']);
+            $("#action").html('<a href="javascript:logout();">Logout</a>');
+          });
+        }
       }
       function checkTokenGrant() {
       	// First, parse the query string
-		var params = {}, queryString = location.hash.substring(1),
-		    regex = /([^&=]+)=([^&]*)/g, m;
-		while (m = regex.exec(queryString)) {
-		  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-		}
+    		var params = {}, queryString = location.hash.substring(1),
+    		    regex = /([^&=]+)=([^&]*)/g, m;
+    		while (m = regex.exec(queryString)) {
+    		  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    		}
 
-		// Verify that we have a token grant
-		if (params['access_token']) {
-			// validate the token
-			$.ajax({
-				url:idpHost+'/oauth/check_token',
-				type: "POST",
-				headers: {
-					Authorization: "Basic " + clientAuth
-				},
-				data: {
-					token: params['access_token']
-				}
-			})
-			.done(function (data) {
-				console.log("Storing session data: ", data);
-				// window.sessionStorage.idpAuth=data;
-        window.sessionStorage.setItem('idpAuth',data);
-				goHome();
-			});
-		}
+    		// Verify that we have a token grant
+    		if (params['access_token']) {
+          // save access token in session storage
+          window.sessionStorage.idpAccessToken=params['access_token'];
+          goHome();
+    		}
       }
     </script>
     <div id="main">Welcome Guest</div>
