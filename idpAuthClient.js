@@ -6,7 +6,7 @@
   var idpHost='https://if-idp.appspot.com';
   var errorPage;
 
-  function idpProtected(errorPage, main) {
+  function idpProtected(errorPage) {
     this.errorPage = errorPage;
     if (!isAuthenticated()) {
       console.log("User is not authenticated");
@@ -14,7 +14,6 @@
       // validateToken(window.sessionStorage.idpAccessToken, errorPage);
     } else {
       console.log("User is already authenticated");
-      $(main).removeClass('hidden');
     }
   }
 
