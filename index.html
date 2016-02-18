@@ -37,7 +37,7 @@
 
 		// Verify that we have a token grant
 		if (params['access_token']) {
-			console.log("using auth:", clientAuth);
+			// validate the token
 			$.ajax({
 				url:idpHost+'/oauth/check_token',
 				type: "POST",
@@ -50,17 +50,16 @@
 			})
 			.done(function (data) {
 				console.log("data:", data);
-			document.getElementById("main").textContent = "Welcome " + data['given_name'] + " " + data['family_name'];
-			document.getElementById("login").remove();
+			$.("#main").textContent = "Welcome " + data['given_name'] + " " + data['family_name'];
+			$.("#action").html('<a href="javascript:logout();">Logout</a>');
 			});
 		} else {
-			document.getElementById("main").textContent = "Welcome Guest";
-			document.getElementById("logout").remove();
+			$.("#main").textContent = "Welcome Guest";
+			$.("#action").html('<a href="javascript:login();">Login</a>');
 		}
       }
     </script>
-    <div id="main"></div>
-    <div id="login"><a href="javascript:login();">Login</a></div>
-    <div id="logout"><a href="javascript:logout();">Logout</a></div>
+    <div id="main">Welcome Guest</div>
+    <div id="action"><a href="javascript:logout();">Logout</a></div>
 </body>
 </html>
