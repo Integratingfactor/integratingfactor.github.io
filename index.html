@@ -29,7 +29,6 @@
       	console.log(idpAccessToken);
       	// if (typeof window.sessionStorage.idpAuth !== "undefined" && window.sessionStorage.idpAuth !== null) {
           validateToken(window.sessionStorage.idpAccessToken);
-      	}
       }
       function validateToken(accessToken) {
         if (accessToken && typeof accessToken != "undefined" && accessToken != "null") {
