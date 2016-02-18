@@ -8,10 +8,11 @@
   function idpProtected(errorPage) {
     if (!isAuthenticated()) {
       console.log("User is not authenticated");
-      checkTokenGrant();
-      validateToken(window.sessionStorage.idpAccessToken, errorPage);
+      checkTokenGrant(errorPage);
+      // validateToken(window.sessionStorage.idpAccessToken, errorPage);
+    } else {
+      console.log("User is already authenticated");      
     }
-    console.log("User is already authenticated");
   }
 
   function requestAccessToken(){
@@ -60,7 +61,7 @@
     }
   }
 
-  function checkTokenGrant() {
+  function checkTokenGrant(errorPage) {
     // First, parse the query string
     var params = {}, queryString = location.hash.substring(1),
         regex = /([^&=]+)=([^&]*)/g, m;
@@ -71,8 +72,10 @@
     // Verify that we have a token grant
     if (params['access_token']) {
       // save access token in session storage
-      window.sessionStorage.idpAccessToken=params['access_token'];
-      goHome();
+      // window.sessionStorage.idpAccessToken=params['access_token'];
+      // goHome();
+
+      validateToken(params['access_token'], errorPage);
     } else {
       requestAccessToken();
     }
