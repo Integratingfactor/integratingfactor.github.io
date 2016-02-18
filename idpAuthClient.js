@@ -1,4 +1,4 @@
-// (function ($) {
+(function ($) {
   var clientId='test.endpoint.client';
   var clientSecret='';
   var clientAuth=btoa(clientId+':'+clientSecret);
@@ -11,7 +11,6 @@
     if (!isAuthenticated()) {
       console.log("User is not authenticated");
       checkTokenGrant(errorPage);
-      // validateToken(window.sessionStorage.idpAccessToken, errorPage);
     } else {
       console.log("User is already authenticated");
       afterAuthentication();
@@ -82,10 +81,6 @@
 
     // Verify that we have a token grant
     if (params['access_token']) {
-      // save access token in session storage
-      // window.sessionStorage.idpAccessToken=params['access_token'];
-      // goHome();
-
       // remove hash fragments from location
       console.log("found access_token in hash, validating it");
       validateToken(params['access_token'], errorPage);
@@ -96,4 +91,4 @@
       requestAccessToken();
     }
   }
-// }(this));
+}(this));
