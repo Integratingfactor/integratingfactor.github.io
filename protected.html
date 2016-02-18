@@ -1,6 +1,6 @@
 <html>
-	<head>
-	</head>
+  <head>
+  </head>
   <body onload="idpProtected('/', afterAuthentication)">
     <div>
         <div id="greeting"></div>
@@ -8,12 +8,12 @@
 	    <a href="javascript:idpLogout();"><button>Logout</button></a>
     </div>
     <script language="javascript">
-    	function afterAuthentication() {
-    		console.log("user authenticated: ", getIdpUser('given_name'));
-    		$('#greeting').html('<h1>Hello '+ getIdpUser('given_name') + ' ' + getIdpUser('family_name') + '</h1>')
+    	function afterAuthentication(idp) {
+    		console.log("user authenticated: ", idp.getIdpUser('given_name'));
+    		$('#greeting').html('<h1>Hello '+ idp.getIdpUser('given_name') + ' ' + idp.getIdpUser('family_name') + '</h1>')
     	}
     </script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="idpAuthClient.js"></script>
 </body>
 </html>

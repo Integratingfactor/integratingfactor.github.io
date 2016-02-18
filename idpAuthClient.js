@@ -1,4 +1,4 @@
-(function ($) {
+// (function ($) {
   var clientId='test.endpoint.client';
   var clientSecret='';
   var clientAuth=btoa(clientId+':'+clientSecret);
@@ -13,7 +13,7 @@
       checkTokenGrant(errorPage);
     } else {
       console.log("User is already authenticated");
-      afterAuthentication();
+      afterAuthentication(this);
     }
   }
 
@@ -91,4 +91,4 @@
       requestAccessToken();
     }
   }
-}(this));
+// }(this));
