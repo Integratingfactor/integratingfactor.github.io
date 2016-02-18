@@ -8,7 +8,8 @@
     <script language="javaScript">
       var clientId='test.endpoint.client';
       var clientSecret='';
-      var clientAuth=md5(clientId+':'+clientSecret);
+      //var clientAuth=md5(clientId+':'+clientSecret);
+      var clientAuth='dGVzdC5lbmRwb2ludC5jbGllbnQ6';
       var idpHost='http://localhost:8080'
       var idpLogin=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
       Element.prototype.remove = function() {
