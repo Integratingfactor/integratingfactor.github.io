@@ -12,10 +12,11 @@
       var idpHost='https://if-idp.appspot.com';
       var idpLogin=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
       function login(){
+      	window.sessionStorage.idpAuth=undefined;
         window.location=idpLogin;
       }
       function logout(){
-      	window.sessionStorage.idpAuth=null;
+      	window.sessionStorage.idpAuth=undefined;
       	goHome();
       }
       function goHome() {
@@ -23,7 +24,7 @@
       }
       function startUp() {
       	console.log("Session data: ", window.sessionStorage);
-      	if (window.sessionStorage.idpAuth !== null) {
+      	if (window.sessionStorage.idpAuth !== undefined) {
       		console.log("Found authentication object: ", window.sessionStorage.idpAuth);
       		$("#main").html("Welcome " + window.sessionStorage.idpAuth['given_name'] + " " + window.sessionStorage.idpAuth['family_name']);
 			$("#action").html('<a href="javascript:logout();">Logout</a>');
