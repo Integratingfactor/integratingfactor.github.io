@@ -24,7 +24,7 @@
       }
       function startUp() {
       	console.log(window.sessionStorage.idpAuth);
-      	if (window.sessionStorage.idpAuth !== undefined) {
+      	if (typeof window.sessionStorage.idpAuth !== undefined && typeof window.sessionStorage.idpAuth !== null) {
       		console.log("Found authentication object: ", window.sessionStorage.idpAuth);
       		$("#main").html("Welcome " + window.sessionStorage.idpAuth['given_name'] + " " + window.sessionStorage.idpAuth['family_name']);
 			    $("#action").html('<a href="javascript:logout();">Logout</a>');
