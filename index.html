@@ -3,7 +3,7 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 
 	</head>
-  <body onload="checkTokenGrant()">
+  <body onload="startUp()">
     <script language="javaScript">
       var clientId='test.endpoint.client';
       var clientSecret='';
@@ -21,7 +21,7 @@
       function goHome() {
       	window.location='http://'+window.location.hostname+window.location.pathname;
       }
-      function startup() {
+      function startUp() {
       	if (window.sessionStorage.idpAuth) {
       		$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
 			$("#action").html('<a href="javascript:logout();">Logout</a>');
