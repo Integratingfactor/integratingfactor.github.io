@@ -15,14 +15,14 @@
         window.location=idpLogin;
       }
       function logout(){
-      	localStorage.idpAuth=null;
+      	window.sessionStorage.idpAuth=null;
       	goHome();
       }
       function goHome() {
       	window.location='http://'+window.location.hostname+window.location.pathname;
       }
       function startup() {
-      	if (localStorage.idpAuth) {
+      	if (window.sessionStorage.idpAuth) {
       		$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
 			$("#action").html('<a href="javascript:logout();">Logout</a>');
       	} else {
@@ -53,7 +53,7 @@
 				}
 			})
 			.done(function (data) {
-				localStorage.idpAuth=data;
+				window.sessionStorage.idpAuth=data;
 				goHome();
 			});
 		}
