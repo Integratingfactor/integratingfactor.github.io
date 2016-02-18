@@ -12,11 +12,13 @@
       var idpHost='https://if-idp.appspot.com';
       var idpLogin=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
       function login(){
-      	window.sessionStorage.idpAuth=null;
+      	// window.sessionStorage.idpAuth=null;
+        window.sessionStorage.setItem('idpAuth',null);
         window.location=idpLogin;
       }
       function logout(){
-      	window.sessionStorage.idpAuth=null;
+      	// window.sessionStorage.idpAuth=null;
+        window.sessionStorage.setItem('idpAuth',null);
       	goHome();
       }
       function goHome() {
@@ -60,7 +62,8 @@
 			})
 			.done(function (data) {
 				console.log("Storing session data: ", data);
-				window.sessionStorage.idpAuth=data;
+				// window.sessionStorage.idpAuth=data;
+        window.sessionStorage.setItem('idpAuth',data);
 				goHome();
 			});
 		}
