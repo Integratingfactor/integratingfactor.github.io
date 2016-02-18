@@ -16,7 +16,9 @@
   }
 
   function requestAccessToken(){
+    console.log("requesting access token");
     window.sessionStorage.idpAccessToken=null;
+    window.location.hash=null;
     window.location=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
   }
 
@@ -40,6 +42,7 @@
   }
 
   function validateToken(accessToken, errorPage) {
+    console.log("validating access token");
     if (accessToken && typeof accessToken != "undefined" && accessToken != "null") {
       $.ajax({
         url:idpHost+'/oauth/check_token',
@@ -64,6 +67,7 @@
   }
 
   function checkTokenGrant(errorPage) {
+    console.log("checking access token in location hash");
     // First, parse the query string
     var params = {}, queryString = location.hash.substring(1),
         regex = /([^&=]+)=([^&]*)/g, m;
@@ -78,7 +82,7 @@
       // goHome();
 
       // remove hash fragments from location
-      location.hash=null;
+      console.log("found access_token in hash, validating it");
       validateToken(params['access_token'], errorPage);
     } else {
       requestAccessToken();
