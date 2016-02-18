@@ -3,9 +3,16 @@
 	</head>
   <body onload="idpProtected('/')">
     <div>
+        <div id="greeting"></div>
 	    <p class="lead">This is secret page, you must be authenticated!!!</p>
 	    <a href="javascript:idpLogout();"><button>Logout</button></a>
     </div>
+    <script type="javascript">
+    	function afterAuthentication() {
+    		console.log("user authenticated: ", getIdpUser('given_name'));
+    		$('#greeting').html('<h1>Hello '+ getIdpUser('given_name') + ' ' + getIdpUser('family_name') + '</h1>')
+    	}
+    </script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="idpAuthClient.js"></script>
 </body>
