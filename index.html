@@ -22,10 +22,10 @@
       	window.location='http://'+window.location.hostname+window.location.pathname;
       }
       function startUp() {
-      	console.log("Session data: ", window.sessionStorage);
+      	// console.log("Session data: ", window.sessionStorage);
       	if (window.sessionStorage.idpAuth != null) {
       		console.log("Found authentication object: ", window.sessionStorage.idpAuth);
-      		$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
+      		$("#main").html("Welcome " + window.sessionStorage.idpAuth['given_name'] + " " + window.sessionStorage.idpAuth['family_name']);
 			$("#action").html('<a href="javascript:logout();">Logout</a>');
       	} else {
       		console.log("Did not find any authentication object");
