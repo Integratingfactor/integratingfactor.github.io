@@ -2,7 +2,6 @@
   var clientId='test.endpoint.client';
   var clientSecret='';
   var clientAuth=btoa(clientId+':'+clientSecret);
-  //var idpHost='http://localhost:8080';
   var idpHost='https://if-idp.appspot.com';
   var errorPage;
 
@@ -17,11 +16,11 @@
     }
   }
 
-  function requestAccessToken(){
+  function requestAccessToken(clientId,type,redirectUrl){
     console.log("requesting access token");
     window.sessionStorage.idpAccessToken=null;
     window.location.hash=null;
-    window.location=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
+    window.location=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type='+type+'&redirect_uri='+redirectUrl;
   }
 
   function isAuthenticated() {
@@ -39,7 +38,6 @@
     console.log("logging out user, redirecting to: ", this.errorPage);
     window.sessionStorage.idpUser=null;
     window.location=this.errorPage;
-    // goHome();
   }
 
   function goHome() {
@@ -89,7 +87,7 @@
       console.log("Token authorization failed: ", params['error_description']);
       window.location=errorPage;
     } else {
-      requestAccessToken();
+      requestAccessToken(clientId, 'token', 'http://'+window.location.hostname+window.location.pathname);
     }
   }
 // }(this));
