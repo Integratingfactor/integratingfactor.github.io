@@ -50,12 +50,12 @@
 			})
 			.done(function (data) {
 				console.log("data:", data);
-			$.("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
-			$.("#action").html('<a href="javascript:logout();">Logout</a>');
+			$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
+			$("#action").html('<a href="javascript:logout();">Logout</a>');
 			});
 		} else {
-			$.("#main").html("Welcome Guest");
-			$.("#action").html('<a href="javascript:login();">Login</a>');
+			$("#main").html("Welcome Guest");
+			$("#action").html('<a href="javascript:login();">Login</a>');
 		}
       }
     </script>
