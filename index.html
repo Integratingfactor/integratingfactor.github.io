@@ -13,12 +13,12 @@
       var idpLogin=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
       function login(){
       	// window.sessionStorage.idpAuth=null;
-        window.sessionStorage.setItem('idpAuth',null);
+        window.sessionStorage.idpAccessToken=null;
         window.location=idpLogin;
       }
       function logout(){
       	// window.sessionStorage.idpAuth=null;
-        window.sessionStorage.setItem('idpAuth',null);
+        window.sessionStorage.idpAccessToken=null;
       	goHome();
       }
       function goHome() {
