@@ -36,7 +36,7 @@
 		// Verify that we have a token grant
 		if (params['access_token']) {
 			$.ajax({
-				url:"https://https://if-idp.appspot.com/oauth/check_token",
+				url:"https://if-idp.appspot.com/oauth/check_token",
 				type: "POST",
 				headers: {
 					Authorization: "Basic " + md5(clientId+':'+clientSecret)
