@@ -11,16 +11,6 @@
       //var idpHost='http://localhost:8080';
       var idpHost='https://if-idp.appspot.com';
       var idpLogin=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type=token&redirect_uri='+'http://'+window.location.hostname+window.location.pathname;
-      Element.prototype.remove = function() {
-	    this.parentElement.removeChild(this);
- 	  }
-	  NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-	    for(var i = this.length - 1; i >= 0; i--) {
-	        if(this[i] && this[i].parentElement) {
-	            this[i].parentElement.removeChild(this[i]);
-	        }
-	    }
-	  }
       function login(){
         window.location=idpLogin;
       }
