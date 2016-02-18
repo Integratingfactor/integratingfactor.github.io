@@ -39,8 +39,8 @@
 				url:"https://https://if-idp.appspot.com/oauth/check_token",
 				type: "POST",
 				headers: {
-					Authorization: "Basic " + md5(clientId+':'+clientSecret);
-				}
+					Authorization: "Basic " + md5(clientId+':'+clientSecret)
+				},
 				data: {
 					token: params['access_token']
 				}
