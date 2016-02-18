@@ -34,7 +34,7 @@
   }
 
   function idpLogout(){
-    console.log("logging out user");
+    console.log("logging out user, redirecting to: ", this.errorPage);
     window.sessionStorage.idpUser=null;
     window.location=this.errorPage;
     // goHome();
@@ -87,6 +87,9 @@
       // remove hash fragments from location
       console.log("found access_token in hash, validating it");
       validateToken(params['access_token'], errorPage);
+    } else if (params['error']{
+      console.log("Token authorization failed: ", params['error_description']);
+      window.location=errorPage;
     } else {
       requestAccessToken();
     }
