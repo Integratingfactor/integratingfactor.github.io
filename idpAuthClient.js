@@ -30,6 +30,7 @@
   }
 
   function idpLogout(){
+    console.log("logging out user");
     window.sessionStorage.idpUser=null;
     goHome();
   }
@@ -76,6 +77,8 @@
       // window.sessionStorage.idpAccessToken=params['access_token'];
       // goHome();
 
+      // remove hash fragments from location
+      location.hash=null;
       validateToken(params['access_token'], errorPage);
     } else {
       requestAccessToken();
