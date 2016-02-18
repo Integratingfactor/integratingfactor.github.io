@@ -4,8 +4,10 @@
   var clientAuth=btoa(clientId+':'+clientSecret);
   //var idpHost='http://localhost:8080';
   var idpHost='https://if-idp.appspot.com';
+  var errorPage;
 
   function idpProtected(errorPage) {
+    this.errorPage = errorPage;
     if (!isAuthenticated()) {
       console.log("User is not authenticated");
       checkTokenGrant(errorPage);
@@ -34,7 +36,8 @@
   function idpLogout(){
     console.log("logging out user");
     window.sessionStorage.idpUser=null;
-    goHome();
+    window.location=this.errorPage;
+    // goHome();
   }
 
   function goHome() {
@@ -60,7 +63,7 @@
         goHome();
       })
       .error(function (req, status, error) {
-        console.log("Failed to authenticate: ", status, error);
+        console.log("Failed to get token: ", status, error);
         window.location=errorPage;
       });
     }
