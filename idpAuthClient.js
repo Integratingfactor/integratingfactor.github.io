@@ -53,6 +53,7 @@
       .success(function (data) {
         console.log("validated token: ", JSON.stringify(data));
         window.sessionStorage.idpUser=JSON.stringify(data);
+        goHome();
       })
       .error(function (req, status, error) {
         console.log("Failed to authenticate: ", status, error);
