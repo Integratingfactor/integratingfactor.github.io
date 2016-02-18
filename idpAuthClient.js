@@ -24,7 +24,6 @@
   }
 
   function isAuthenticated() {
-    console.log(window.sessionStorage.idpUser);
     return window.sessionStorage.idpUser && typeof window.sessionStorage.idpUser !== "undefined" && window.sessionStorage.idpUser !== "null";
   }
 
