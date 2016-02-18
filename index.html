@@ -50,11 +50,11 @@
 			})
 			.done(function (data) {
 				console.log("data:", data);
-			$.("#main").textContent = "Welcome " + data['given_name'] + " " + data['family_name'];
+			$.("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
 			$.("#action").html('<a href="javascript:logout();">Logout</a>');
 			});
 		} else {
-			$.("#main").textContent = "Welcome Guest";
+			$.("#main").html("Welcome Guest");
 			$.("#action").html('<a href="javascript:login();">Login</a>');
 		}
       }
