@@ -29,8 +29,6 @@
   }
 
   function getIdpUser(param) {
-    console.log('request to get ', param);
-    console.log(JSON.parse(window.sessionStorage.idpUser));
     return JSON.parse(window.sessionStorage.idpUser)[param];
   }
 
@@ -63,7 +61,7 @@
         goHome();
       })
       .error(function (req, status, error) {
-        console.log("Failed to get token: ", status, error);
+        console.log("Failed to validate token: ", status, error);
         window.location=errorPage;
       });
     }
