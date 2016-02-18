@@ -4,7 +4,7 @@
     <script src="idpAuthClient.js"></script>
 	</head>
   <body onload="idpProtected('/index.html')">
-    <div id="main">Welcome Guest</div>
-    <div id="action"><a href="javascript:login();">Login</a></div>
+    <div id="main">This is secret page, you must be authenticated!!!</div>
+    <div id="action"><a href="javascript:idpLogout();">Logout</a></div>
 </body>
 </html>

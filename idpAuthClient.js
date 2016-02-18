@@ -7,9 +7,11 @@
 
   function idpProtected(errorPage) {
     if (!isAuthenticated()) {
+      console.log("User is not authenticated");
       checkTokenGrant();
       validateToken(window.sessionStorage.idpAccessToken, errorPage);
     }
+    console.log("User is already authenticated");
   }
 
   function requestAccessToken(){
@@ -18,6 +20,7 @@
   }
 
   function isAuthenticated() {
+    console.log(window.sessionStorage.idpUser);
     return window.sessionStorage.idpUser && typeof window.sessionStorage.idpUser !== "undefined" || window.sessionStorage.idpUser !== "null";
   }
 
