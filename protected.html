@@ -1,9 +1,12 @@
 <html>
 	<head>
 	</head>
-  <body onload="idpProtected('/index.html')">
-    <div id="main">This is secret page, you must be authenticated!!!</div>
-    <div id="action"><a href="javascript:idpLogout();">Logout</a></div>
+  <body onload="idpProtected('/', 'mainContainer')">
+    <div type="hidden" id="mainContainer">
+	    <p class="lead">This is secret page, you must be authenticated!!!</p>
+	    <a href="javascript:idpLogout();"><button>Logout</button></a>
+    </div>
+    </script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="idpAuthClient.js"></script>
 </body>

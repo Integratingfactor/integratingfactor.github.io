@@ -6,14 +6,15 @@
   var idpHost='https://if-idp.appspot.com';
   var errorPage;
 
-  function idpProtected(errorPage) {
+  function idpProtected(errorPage, main) {
     this.errorPage = errorPage;
     if (!isAuthenticated()) {
       console.log("User is not authenticated");
       checkTokenGrant(errorPage);
       // validateToken(window.sessionStorage.idpAccessToken, errorPage);
     } else {
-      console.log("User is already authenticated");      
+      console.log("User is already authenticated");
+      $('#'+main).removeAttr('type');
     }
   }
 
