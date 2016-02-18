@@ -43,9 +43,9 @@
             }
           })
           .done(function (data) {
-            console.log("validated token: ", JASON.stringify(data);
+            console.log("validated token: ", JASON.stringify(data));
             // window.sessionStorage.idpAuth=data;
-            $("#main").html("Welcome " + idpAuth['given_name'] + " " + idpAuth['family_name']);
+            $("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
             $("#action").html('<a href="javascript:logout();">Logout</a>');
           });
         }
