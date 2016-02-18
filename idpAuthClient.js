@@ -87,7 +87,7 @@
       // remove hash fragments from location
       console.log("found access_token in hash, validating it");
       validateToken(params['access_token'], errorPage);
-    } else if (params['error']{
+    } else if (params['error']){
       console.log("Token authorization failed: ", params['error_description']);
       window.location=errorPage;
     } else {
