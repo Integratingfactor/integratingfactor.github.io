@@ -31,6 +31,7 @@
   }
 
   function getIdpUser(param) {
+    console.log('request to get ', param);
     return JSON.parse(window.sessionStorage.idpUser).param;
   }
 
