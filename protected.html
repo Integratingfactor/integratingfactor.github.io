@@ -7,7 +7,7 @@
 	    <p class="lead">This is secret page, you must be authenticated!!!</p>
 	    <a href="javascript:idpLogout();"><button>Logout</button></a>
     </div>
-    <script type="javascript">
+    <script language="javascript">
     	function afterAuthentication() {
     		console.log("user authenticated: ", getIdpUser('given_name'));
     		$('#greeting').html('<h1>Hello '+ getIdpUser('given_name') + ' ' + getIdpUser('family_name') + '</h1>')
