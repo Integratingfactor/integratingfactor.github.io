@@ -46,7 +46,7 @@
             }
           })
           .done(function (data) {
-            console.log("validated token: ", JASON.stringify(data));
+            console.log("validated token: ", JSON.stringify(data));
             // window.sessionStorage.idpAuth=data;
             $("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
             $("#action").html('<a href="javascript:logout();">Logout</a>');
