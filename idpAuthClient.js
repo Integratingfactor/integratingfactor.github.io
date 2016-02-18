@@ -14,7 +14,7 @@
       // validateToken(window.sessionStorage.idpAccessToken, errorPage);
     } else {
       console.log("User is already authenticated");
-      $(main).removeclass('hidden');
+      $(main).removeClass('hidden');
     }
   }
 
