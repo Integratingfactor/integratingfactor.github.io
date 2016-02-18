@@ -15,7 +15,21 @@
         window.location=idpLogin;
       }
       function logout(){
-        window.location='http://'+window.location.hostname+window.location.pathname;
+      	localStorage.idpAuth=null;
+      	goHome();
+      }
+      function goHome() {
+      	window.location='http://'+window.location.hostname+window.location.pathname;
+      }
+      function startup() {
+      	if (localStorage.idpAuth) {
+      		$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
+			$("#action").html('<a href="javascript:logout();">Logout</a>');
+      	} else {
+			$("#main").html("Welcome Guest");
+			$("#action").html('<a href="javascript:login();">Login</a>');
+			checkTokenGrant();
+      	}
       }
       function checkTokenGrant() {
       	// First, parse the query string
@@ -39,13 +53,9 @@
 				}
 			})
 			.done(function (data) {
-				console.log("data:", data);
-			$("#main").html("Welcome " + data['given_name'] + " " + data['family_name']);
-			$("#action").html('<a href="javascript:logout();">Logout</a>');
+				localStorage.idpAuth=data;
+				goHome();
 			});
-		} else {
-			$("#main").html("Welcome Guest");
-			$("#action").html('<a href="javascript:login();">Login</a>');
 		}
       }
     </script>
