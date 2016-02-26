@@ -1,0 +1,8 @@
+  <div align="left" ng-show="home.isActive()">
+    <h1>{{portalCtrl.greeting}}</h1>
+    <p class="lead">Welcome to developer program with Integratingfactor.com, where you can start integrating security in your applications with #ProtectNotHide.</p>
+    <small>This program is currently available for trial purpose only.</small>
+  </div>
+  <div ng-hide="portalCtrl.isAuthenticated()">
+    <h1>{{portalCtrl.greeting}}</h1>
+  </div>

@@ -18,11 +18,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- inject:js -->
     <script src="js/angular.min.js"></script>
+    <script src="js/appsTemplates.js"></script>
     <script src="js/devApp.js"></script>
+    <script src="js/homeTemplates.js"></script>
     <script src="js/idpOauthClient.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/min.bootstrap.js"></script>
     <script src="js/pageTemplates.js"></script>
+    <script src="js/projectsTemplates.js"></script>
     <!-- endinject -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -37,7 +40,9 @@
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <page-header></page-header>
-          <h1>{{portalCtrl.greeting}}</h1>
+          <home-tab></home-tab>
+          <projects-tab></projects-tab>
+          <apps-tab></apps-tab>
           <page-footer></page-footer>
         </div>
       </div>
