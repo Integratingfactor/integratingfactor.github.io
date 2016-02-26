@@ -11,7 +11,7 @@ var reload = browserSync.reload;
 
 
 gulp.task('clean', function(cb){
-  del(['../site/*'], cb);
+  del(['../*.html', '../js', '../images', '../styles'], cb);
 });
 
 
@@ -43,32 +43,32 @@ gulp.task('styles', function(){
   	.pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
     .pipe(csso())
-    .pipe(gulp.dest('../site/styles'));
+    .pipe(gulp.dest('../styles'));
 });
 
 gulp.task('html', ['styles', 'js', 'images'], function() {
-  var injectFiles = gulp.src(['../site/styles/*.css',
-    '../site/js/*.js']);
+  var injectFiles = gulp.src(['../styles/*.css',
+    '../js/*.js']);
 
   var injectOptions = {
     addRootSlash: false,
-    ignorePath: ['../site']
+    ignorePath: ['../']
   };
 
   return gulp.src('../src/**/*.html')
     .pipe(inject(injectFiles, injectOptions))
     .pipe(wiredep())
-    .pipe(gulp.dest('../site/'));
+    .pipe(gulp.dest('../'));
 });
 
 gulp.task('js', function() {
   return gulp.src('../src/**/*.js')
-    .pipe(gulp.dest('../site/'));
+    .pipe(gulp.dest('../'));
 });
 
 gulp.task('images', function() {
   return gulp.src('../src/images/*.png')
-    .pipe(gulp.dest('../site/images'));
+    .pipe(gulp.dest('../images'));
 });
 
 // Watch files for changes & reload
@@ -81,7 +81,7 @@ gulp.task('serve', ['html'], function () {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: ['../site']
+    server: ['../']
   });
 
   gulp.watch(['../src/**/*.html'], ['html', reload]);
