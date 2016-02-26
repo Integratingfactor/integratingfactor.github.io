@@ -26,9 +26,14 @@
     <![endif]-->
   </head>
   <body ng-controller="DevPortalController as portalCtrl">
-    <div class="container">
-      <page-header></page-header>
-      <page-footer></page-footer>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <page-header></page-header>
+          <h1>{{portalCtrl.greeting}}</h1>
+          <page-footer></page-footer>
+        </div>
+      </div>
     </div>
   </body>
 </html>
