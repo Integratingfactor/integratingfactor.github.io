@@ -6,7 +6,7 @@
 		var clientAuth=btoa(clientId+':'+clientSecret);
 		var idpHost='https://if-idp.appspot.com';
 		var errorPage;
-		var redirectUrl="http://localhost:3000";
+		var redirectUrl="http://integratingfactor.github.io";
 
 		function requestAccessToken(clientId,type){
 			$log.log("requesting access token");
