@@ -88,6 +88,13 @@
 			},
 			isAuthenticated: function () {
 				return $window.sessionStorage.idpUser && typeof $window.sessionStorage.idpUser !== "undefined" && $window.sessionStorage.idpUser !== "null";
+			},
+			isAuthorized: function(role, tenant) {
+				if (!this.isAuthenticated()) {
+					return false;
+				}
+				var idp = JSON.parse($window.sessionStorage.idpUser);
+				return (!role || $.inArray(role, idp['org_roles']) !== -1) && (!tenant || tenant == idp['org_id']);
 			}
 		};
 	});

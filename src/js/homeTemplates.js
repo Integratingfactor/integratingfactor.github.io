@@ -10,6 +10,9 @@
 				this.isActive = function() {
 					return IdpClient.isAuthenticated() && this.myTab === parseInt($window.sessionStorage.currTab);
 				};
+				this.isAuthorized = function() {
+					return IdpClient.isAuthorized('USER', 'devnet.integratingfactor.com');
+				};
 			},
 			controllerAs: 'home'
 		};
