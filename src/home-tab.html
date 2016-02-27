@@ -1,11 +1,5 @@
   <div ng-show="home.isActive()">
-    <div align="left">
-      <h1>{{home.greeting()}}</h1>
-      <p class="lead">Welcome to developer program with Integratingfactor.com, where you can start integrating security in your applications with #ProtectNotHide.</p>
-    </div>
-  	<div ng-hide="home.isAuthorized()">
-      <div align="left">
-        <h3>Select option to start: <small>(coming soon)</small></h3>
-      </div>
-  	</div>
+    <home-tab-unsubscribed></home-tab-unsubscribed>
+    <home-tab-trial></home-tab-trial>
+    <home-tab-subscription></home-tab-subscription>
   </div>

@@ -8,21 +8,31 @@
 			controller: function($window, $log){
 				this.myTab = 1;
 				this.isActive = function() {
-					// return IdpClient.isAuthenticated() && this.myTab === parseInt($window.sessionStorage.currTab);
 					return this.myTab === parseInt($window.sessionStorage.currTab);
 				};
-				this.isAuthorized = function() {
-					return IdpClient.isAuthorized('USER', 'devnet.integratingfactor.com');
-				};
-				this.greeting = function() {
-					if (IdpClient.isAuthenticated()) {
-						return 'Hello ' + IdpClient.getUser().firstName + '!';
-					} else {
-						return 'Welcome!';
-					}
-				}
 			},
 			controllerAs: 'home'
+		};
+	});
+
+	app.directive('homeTabUnsubscribed', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'home-tab-unsubscribed.html'
+		};
+	});
+
+	app.directive('homeTabTrial', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'home-tab-trial.html'
+		};
+	});
+
+	app.directive('homeTabSubscription', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'home-tab-subscription.html'
 		};
 	});
 })();

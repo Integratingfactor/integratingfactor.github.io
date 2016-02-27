@@ -15,12 +15,12 @@
 			$window.location=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type='+type+'&redirect_uri='+redirectUrl;
 		}
 
-		function goHome() {
-			// $window.location='http://'+$window.location.hostname+$window.location.pathname;
-			$window.location=redirectUrl;
-		}
+		// function goHome() {
+		// 	// $window.location='http://'+$window.location.hostname+$window.location.pathname;
+		// 	$window.location=redirectUrl;
+		// }
 
-		function validateToken(accessToken, errorPage) {
+		function validateToken(accessToken, returnTo) {
 			$log.log("validating access token");
 			if (accessToken && typeof accessToken != "undefined" && accessToken != "null") {
 			  $http({
@@ -37,16 +37,16 @@
 			  .success(function (data) {
 			    $log.log("validated token: ", JSON.stringify(data));
 			    $window.sessionStorage.idpUser=JSON.stringify(data);
-			    goHome();
+			    $window.location=returnTo;
 			  })
 			  .error(function (req, status, error) {
 			    $log.log("Failed to validate token: ", status, error);
-			    $window.location=errorPage;
+			    $window.location=returnTo;
 			  });
 			}
 		}
 
-		function checkTokenGrant(errorPage) {
+		function checkTokenGrant(returnTo) {
 			$log.log("checking access token in location hash");
 			// First, parse the query string
 			var params = {}, queryString = $window.location.hash.substring(1),
@@ -59,27 +59,18 @@
 			if (params['access_token']) {
 			  // remove hash fragments from location
 			  $log.log("found access_token in hash, validating it", params['access_token']);
-			  validateToken(params['access_token'], errorPage);
+			  validateToken(params['access_token'], returnTo);
 			} else if (params['error']){
 			  $log.log("Token authorization failed: ", params['error_description']);
-			  $window.location=errorPage;
-			} else {
-			  requestAccessToken(clientId, 'token', 'http://'+$window.location.hostname+$window.location.pathname);
+			  $window.location=returnTo;
 			}
 		}
 
 
 		return {
-			idpProtected: function(errorPage, onSuccess) {
-				$log.log('idp protected called');
-				this.errorPage = errorPage;
-				if (!this.isAuthenticated()) {
-				  $log.log("User is not authenticated");
-				  checkTokenGrant(errorPage);
-				} else {
-				  $log.log("User is already authenticated");
-				  onSuccess(JSON.parse($window.sessionStorage.idpUser));
-				}
+			idpInitialize: function(returnTo) {
+				$log.log('idp initialize called');
+				checkTokenGrant(returnTo);
 			},
 			getUser: function() {
 				var user = JSON.parse($window.sessionStorage.idpUser);
@@ -89,6 +80,16 @@
 					roles: user['org_roles'],
 					org: user['org_id']
 				};
+			},
+			idpLogin: function(onSuccess) {
+				$log.log('idp login called');
+				if (!this.isAuthenticated()) {
+				  $log.log("User is not authenticated");
+				  requestAccessToken(clientId, 'token', 'http://'+$window.location.hostname+$window.location.pathname);
+				} else {
+				  $log.log("User is already authenticated");
+				  onSuccess(JSON.parse($window.sessionStorage.idpUser));
+				}
 			},
 			idpLogout: function() {
 				$log.log("logging out user");

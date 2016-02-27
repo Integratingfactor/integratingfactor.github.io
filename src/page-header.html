@@ -6,6 +6,7 @@
           <li ng-class="{ active:headers.isSet(1) }"><a href="/" ng-click="headers.setTab(1)">Home</a></li>
           <li ng-class="{ active:headers.isSet(2) }"><a href="/" ng-click="headers.setTab(2)">Projects</a></li>
           <li ng-class="{ active:headers.isSet(3) }"><a href="/" ng-click="headers.setTab(3)">Apps</a></li>
+          <li><button class="btn btn-warning" ng-click="portalCtrl.doLoginToggle()">{{portalCtrl.getLoginToggle()}}</button></li>
         </ul>
       </nav>
     </div>
