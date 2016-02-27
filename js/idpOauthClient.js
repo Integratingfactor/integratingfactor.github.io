@@ -81,13 +81,21 @@
 				  onSuccess(JSON.parse($window.sessionStorage.idpUser));
 				}
 			},
+			getUser: function() {
+				var user = JSON.parse($window.sessionStorage.idpUser);
+				return {
+					firstName: user['given_name'],
+					lastName: user['family_name'],
+					roles: user['org_roles'],
+					org: user['org_id']
+				};
+			},
 			idpLogout: function() {
-				$log.log("logging out user, redirecting to: ", this.errorPage);
+				$log.log("logging out user");
 				$window.sessionStorage.idpUser=null;
-				$window.location=this.errorPage;
 			},
 			isAuthenticated: function () {
-				return $window.sessionStorage.idpUser && typeof $window.sessionStorage.idpUser !== "undefined" && $window.sessionStorage.idpUser !== "null";
+				return $window.sessionStorage.idpUser && typeof $window.sessionStorage.idpUser !== "undefined" && $window.sessionStorage.idpUser !== "null" && JSON.parse($window.sessionStorage.idpUser).exp * 1000 > Date.now();
 			},
 			isAuthorized: function(role, tenant) {
 				if (!this.isAuthenticated()) {

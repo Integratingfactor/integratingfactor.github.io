@@ -8,11 +8,19 @@
 			controller: function($window, $log){
 				this.myTab = 1;
 				this.isActive = function() {
-					return IdpClient.isAuthenticated() && this.myTab === parseInt($window.sessionStorage.currTab);
+					// return IdpClient.isAuthenticated() && this.myTab === parseInt($window.sessionStorage.currTab);
+					return this.myTab === parseInt($window.sessionStorage.currTab);
 				};
 				this.isAuthorized = function() {
 					return IdpClient.isAuthorized('USER', 'devnet.integratingfactor.com');
 				};
+				this.greeting = function() {
+					if (IdpClient.isAuthenticated()) {
+						return 'Hello ' + IdpClient.getUser().firstName + '!';
+					} else {
+						return 'Welcome!';
+					}
+				}
 			},
 			controllerAs: 'home'
 		};
