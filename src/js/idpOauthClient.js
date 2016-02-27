@@ -7,18 +7,13 @@
 		var idpHost='https://if-idp.appspot.com';
 		var errorPage;
 		var redirectUrl=$window.location.protocol + '//' + $window.location.host;
+		var userInfo;
+		var token;
 
 		function requestAccessToken(clientId,type){
 			$log.log("requesting access token");
-			$window.sessionStorage.idpAccessToken=null;
-			$window.location.hash=null;
 			$window.location=idpHost+'/oauth/authorize?client_id='+clientId+'&response_type='+type+'&redirect_uri='+redirectUrl;
 		}
-
-		// function goHome() {
-		// 	// $window.location='http://'+$window.location.hostname+$window.location.pathname;
-		// 	$window.location=redirectUrl;
-		// }
 
 		function validateToken(accessToken, returnTo) {
 			$log.log("validating access token");
@@ -35,13 +30,14 @@
 			    })
 			  })
 			  .success(function (data) {
-			    $log.log("validated token: ", JSON.stringify(data));
-			    $window.sessionStorage.idpUser=JSON.stringify(data);
-			    $window.location=returnTo;
+			    $log.log("validated token successfully");
+			    userInfo=data;
+			    token=accessToken;
 			  })
 			  .error(function (req, status, error) {
 			    $log.log("Failed to validate token: ", status, error);
-			    $window.location=returnTo;
+			    userInfo=null;
+			    token=null;
 			  });
 			}
 		}
@@ -54,33 +50,47 @@
 			while (m = regex.exec(queryString)) {
 			  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
 			}
+			$window.location.hash='';
 
 			// Verify that we have a token grant
 			if (params['access_token']) {
 			  // remove hash fragments from location
-			  $log.log("found access_token in hash, validating it", params['access_token']);
+			  $log.log("found access_token in hash, validating it");
 			  validateToken(params['access_token'], returnTo);
 			} else if (params['error']){
 			  $log.log("Token authorization failed: ", params['error_description']);
-			  $window.location=returnTo;
 			}
 		}
 
 
 		return {
+			// call this method at the startup/page load to initialize
 			idpInitialize: function(returnTo) {
-				$log.log('idp initialize called');
+				$log.log('idp library initializing');
 				checkTokenGrant(returnTo);
 			},
-			getUser: function() {
-				var user = JSON.parse($window.sessionStorage.idpUser);
-				return {
-					firstName: user['given_name'],
-					lastName: user['family_name'],
-					roles: user['org_roles'],
-					org: user['org_id']
-				};
+			// get current access token, e.g., to talk to backend service
+			getToken: function() {
+				if (this.isAuthenticated()) {
+					return token;					
+				} else {
+					return null;
+				}
 			},
+			// get current authenticated user
+			getUser: function() {
+				if (this.isAuthenticated()) {
+					return {
+						firstName: userInfo['given_name'],
+						lastName: userInfo['family_name'],
+						roles: userInfo['org_roles'],
+						org: userInfo['org_id']
+					};					
+				} else {
+					return null;
+				}
+			},
+			// intiate a login explicitly
 			idpLogin: function(onSuccess) {
 				$log.log('idp login called');
 				if (!this.isAuthenticated()) {
@@ -88,22 +98,25 @@
 				  requestAccessToken(clientId, 'token', 'http://'+$window.location.hostname+$window.location.pathname);
 				} else {
 				  $log.log("User is already authenticated");
-				  onSuccess(JSON.parse($window.sessionStorage.idpUser));
+				  onSuccess();
 				}
 			},
+			// initiate a logout explicitly
 			idpLogout: function() {
 				$log.log("logging out user");
-				$window.sessionStorage.idpUser=null;
+			    userInfo=null;
+			    token=null;
 			},
+			// check if user is authenticated and token is not expired
 			isAuthenticated: function () {
-				return $window.sessionStorage.idpUser && typeof $window.sessionStorage.idpUser !== "undefined" && $window.sessionStorage.idpUser !== "null" && JSON.parse($window.sessionStorage.idpUser).exp * 1000 > Date.now();
+				return userInfo && userInfo.exp * 1000 > Date.now();
 			},
-			isAuthorized: function(role, tenant) {
+			// check if user is authorized with specified role for the org
+			isAuthorized: function(role, org) {
 				if (!this.isAuthenticated()) {
 					return false;
 				}
-				var idp = JSON.parse($window.sessionStorage.idpUser);
-				return (!role || $.inArray(role, idp['org_roles']) !== -1) && (!tenant || tenant == idp['org_id']);
+				return (!role || $.inArray(role, userInfo['org_roles']) !== -1) && (!org || org == userInfo['org_id']);
 			}
 		};
 	});

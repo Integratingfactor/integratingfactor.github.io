@@ -1,26 +1,45 @@
 (function(){
 	var app = angular.module('page-templates', []);
 
-	app.directive('pageHeader', function(){
+	app.factory('TabTracker', function($window, $log){
+		var currTab = 1;
+		var isSessionStorageSupported = false;
+		try {
+			$window.sessionStorage.test = 1;
+			isSessionStorageSupported = true;
+			var temp = parseInt($window.sessionStorage.currTab);
+			if (temp && typeof temp != "undefined" && temp != "null") {
+				currTab = temp;
+			} else {
+				$window.sessionStorage.currTab = currTab;					
+			}
+		} catch (e) {
+			$log.log('session storage not supported');
+		};
+		return {
+			getCurrTab: function() {
+				return currTab;
+			},
+			setCurrTab: function(setTo) {
+				currTab = setTo;
+				if (isSessionStorageSupported) {
+					$window.sessionStorage.currTab = currTab;
+				}
+			}
+		};
+	});
+
+	app.directive('pageHeader', function(TabTracker){
 		return {
 			restrict: 'E',
 			templateUrl: 'page-header.html',
-			controller: function($window, $log){
-				var currTab = parseInt($window.sessionStorage.currTab);
-				if (currTab && typeof currTab != "undefined" && currTab != "null") {
-					this.tab = currTab;
-				} else {
-					this.tab = 1;
-					$window.sessionStorage.currTab = 1;					
-				}
-
+			controller: function($log){
 				this.isSet = function(checkTab) {
-					return this.tab === checkTab;
+					return TabTracker.getCurrTab() === checkTab;
 				};
 
 				this.setTab = function(setTab) {
-					this.tab = setTab;
-					$window.sessionStorage.currTab = setTab;
+					TabTracker.setCurrTab(setTab);
 				};
 
 			},
