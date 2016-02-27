@@ -12,7 +12,7 @@
 			if (IdpClient.isAuthenticated()) {
 				IdpClient.idpLogout();
 			} else {
-				IdpClient.idpLogin(function(idp){
+				IdpClient.idpLogin(function(){
 				});				
 			}
 		};

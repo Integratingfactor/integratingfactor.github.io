@@ -1,14 +1,14 @@
 (function(){
-	var app = angular.module('home-templates', []);
+	var app = angular.module('home-templates', ['page-templates']);
 
-	app.directive('homeTab', function(IdpClient){
+	app.directive('homeTab', function(IdpClient, TabTracker){
 		return {
 			restrict: 'E',
 			templateUrl: 'home-tab.html',
-			controller: function($window, $log){
+			controller: function($log){
 				this.myTab = 1;
 				this.isActive = function() {
-					return this.myTab === parseInt($window.sessionStorage.currTab);
+					return this.myTab === TabTracker.getCurrTab();
 				};
 			},
 			controllerAs: 'home'
