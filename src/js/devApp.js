@@ -6,7 +6,7 @@
 		IdpClient.idpInitialize('/');
 
 		this.getLoginToggle = function() {
-			return IdpClient.isAuthenticated() ? 'Logout' : 'Login';
+			return IdpClient.isAuthenticated() ? 'Logout' : 'iF Login';
 		};
 		this.doLoginToggle = function() {
 			if (IdpClient.isAuthenticated()) {
@@ -15,7 +15,10 @@
 				IdpClient.idpLogin(function(idp){
 				});				
 			}
-		}
+		};
+		this.isPricingEnabled = function() {
+			return false;
+		};
 		this.isGuest = function() {
 			return !this.isAuthorized('TRIAL') && !this.isAuthorized('SUBSCRIPTION');
 		};
@@ -26,7 +29,7 @@
 			if (IdpClient.isAuthenticated()) {
 				return 'Hello ' + IdpClient.getUser().firstName + '!';
 			} else {
-				return 'Welcome!';
+				return '#ProtectNotHide';
 			};
 		};
 	});

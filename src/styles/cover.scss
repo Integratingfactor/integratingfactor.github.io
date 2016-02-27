@@ -57,7 +57,8 @@ body {
 
 /* Padding for spacing */
 .inner {
-  padding: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
@@ -137,11 +138,14 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    /*position: fixed;*/
+    position: absolute;
     top: 0;
   }
+  .cover-container {
+    padding-top: 40px;
+  }
   .mastfoot {
-    /*position: fixed;*/
+    /*position: absolute;*/
     bottom: 0;
   }
   /* Start the vertical centering */
