@@ -13,6 +13,19 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endinject -->
 
+    <!-- JavaScript -->
+    <!-- inject:js -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/appsTemplates.js"></script>
+    <script src="js/devApp.js"></script>
+    <script src="js/homeTemplates.js"></script>
+    <script src="js/idpOauthClient.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/min.bootstrap.js"></script>
+    <script src="js/pageTemplates.js"></script>
+    <script src="js/projectsTemplates.js"></script>
+    <!-- endinject -->
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,6 +38,9 @@
       <div class="site-wrapper-inner">
         <div class="cover-container">
           <page-header></page-header>
+          <div ng-hide="portalCtrl.isAuthenticated()">
+            <h1>Please wait...</h1>
+          </div>
           <home-tab></home-tab>
           <projects-tab></projects-tab>
           <apps-tab></apps-tab>
@@ -32,19 +48,5 @@
         </div>
       </div>
     </div>
-    <!-- JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- inject:js -->
-    <script src="js/angular.min.js"></script>
-    <script src="js/appsTemplates.js"></script>
-    <script src="js/devApp.js"></script>
-    <script src="js/homeTemplates.js"></script>
-    <script src="js/idpOauthClient.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/min.bootstrap.js"></script>
-    <script src="js/pageTemplates.js"></script>
-    <script src="js/projectsTemplates.js"></script>
-    <!-- endinject -->
   </body>
 </html>
