@@ -15,24 +15,17 @@
 		};
 	});
 
-	app.directive('homeTabUnsubscribed', function(IdpClient){
+	app.directive('homeTabGuest', function(IdpClient){
 		return {
 			restrict: 'E',
-			templateUrl: 'home-tab-unsubscribed.html'
+			templateUrl: 'home-tab-guest.html'
 		};
 	});
 
-	app.directive('homeTabTrial', function(IdpClient){
+	app.directive('homeTabUser', function(IdpClient){
 		return {
 			restrict: 'E',
-			templateUrl: 'home-tab-trial.html'
-		};
-	});
-
-	app.directive('homeTabSubscription', function(IdpClient){
-		return {
-			restrict: 'E',
-			templateUrl: 'home-tab-subscription.html'
+			templateUrl: 'home-tab-user.html'
 		};
 	});
 })();
