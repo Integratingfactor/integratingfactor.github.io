@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('apps-templates', ['page-templates']);
+	var app = angular.module('apps-templates', ['page-templates', 'api-docs-templates']);
 
 	app.directive('appsTab', function(IdpClient, TabTracker){
 		return {

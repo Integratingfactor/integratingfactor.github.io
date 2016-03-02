@@ -9,6 +9,21 @@
 		var redirectUrl=$window.location.protocol + '//' + $window.location.host;
 		var userInfo;
 		var token;
+		var isSessionStorageSupported = false;
+		try {
+			$window.sessionStorage.test = 1;
+			isSessionStorageSupported = true;
+			var temp = $window.sessionStorage.userInfo;
+			if (temp && typeof temp != "undefined" && temp != "null") {
+				userInfo = JSON.parse(temp);
+				$log.log('user info retreived from session storage');
+			} else {
+				$log.log('user info not found in session storage');
+				$window.sessionStorage.userInfo = JSON.stringify(userInfo);					
+			}
+		} catch (e) {
+			$log.log('session storage not supported', e);
+		};
 
 		function requestAccessToken(clientId,type){
 			$log.log("requesting access token");
@@ -32,11 +47,17 @@
 			  .success(function (data) {
 			    $log.log("validated token successfully");
 			    userInfo=data;
+				if (isSessionStorageSupported) {
+					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+				}
 			    token=accessToken;
 			  })
 			  .error(function (req, status, error) {
 			    $log.log("Failed to validate token: ", status, error);
 			    userInfo=null;
+				if (isSessionStorageSupported) {
+					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+				}
 			    token=null;
 			  });
 			}
@@ -105,6 +126,9 @@
 			idpLogout: function() {
 				$log.log("logging out user");
 			    userInfo=null;
+				if (isSessionStorageSupported) {
+					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+				}
 			    token=null;
 			},
 			// check if user is authenticated and token is not expired
