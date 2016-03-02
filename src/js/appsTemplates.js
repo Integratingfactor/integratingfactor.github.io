@@ -14,4 +14,18 @@
 			controllerAs: 'apps'
 		};
 	});
+
+	app.directive('appsTabGuest', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'home-tab-guest.html'
+		};
+	});
+
+	app.directive('appsTabUser', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'apps-tab-user.html'
+		};
+	});
 })();

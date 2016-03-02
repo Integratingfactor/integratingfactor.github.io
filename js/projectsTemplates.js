@@ -14,4 +14,18 @@
 			controllerAs: 'projects'
 		};
 	});
+
+	app.directive('projectsTabGuest', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'home-tab-guest.html'
+		};
+	});
+
+	app.directive('projectsTabUser', function(IdpClient){
+		return {
+			restrict: 'E',
+			templateUrl: 'projects-tab-user.html'
+		};
+	});
 })();

@@ -29,7 +29,7 @@
 			if (IdpClient.isAuthenticated()) {
 				return 'Hello ' + IdpClient.getUser().firstName + '!';
 			} else {
-				return '#ProtectNotHide';
+				return 'Welcome!';
 			};
 		};
 	});

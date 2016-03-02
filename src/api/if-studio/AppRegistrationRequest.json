@@ -1,0 +1,78 @@
+{
+    "title": "Application Registration Request Schema",
+    "type": "object",
+    "oneOf": [
+        { "$ref": "#/definitions/endpoint_app"},
+        { "$ref": "#/definitions/endpoint_app"}
+    ],
+    "definitions": {
+        "endpoint_app" : {
+            "description": "end point app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be endpoint_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application's privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "privacy_url" ]
+            }
+        },
+        "backend_app" : {
+            "description": "backend app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be backend_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "app_secret": {
+                    "type": "string",
+                    "description" : "password for app's OAuth token requests"
+                },
+                "app_key": {
+                    "type": "string",
+                    "description" : "a symmetric encryption key for Openid connect ID response validation"
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application's privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "app_secret", "app_key", "privacy_url" ]
+            }
+        }
+    }
+}

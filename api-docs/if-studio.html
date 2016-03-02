@@ -1,0 +1,799 @@
+<!DOCTYPE HTML><html><head><title>iF Studio API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.2.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>iF Studio API documentation <small>version 1</small></h1><p>https://dev-portal-service.appspot.com</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="api_v1_register" class="panel-title">Self Onboard</h3></div><div class="panel-body"><div class="top-resource-description"><p>Self Onboarding API by an iF User for developer program. This API call must contain an OAuth2 bearer token from an iF User that can identify the user account that is requesting onbaording with developer program.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_api_v1_register"><span class="parent"></span>/api/v1/register</a> <span class="methods"><a href="#api_v1_register_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_api_v1_register" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#api_v1_register_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Self onboarding request by an Integratingfactor.com user for developer program. There is no request body.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_register_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/api/v1/register</h4></div><div class="modal-body"><div class="alert alert-info"><p>Self onboarding request by an Integratingfactor.com user for developer program. There is no request body.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_register_put_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_register_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_register_put_request"><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_register_put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>onborading success</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Onboarding Registration Schema",
+    "type": "object",
+    "properties": {
+        "account_id": {
+            "type": "string"
+        },
+        "user_roles": {
+            "type": "array",
+            "description": "roles assigned to user for iF Studio org",
+            "items": {
+                "type" : "string"
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "account_id": "3eb64sef-13d3-481d-99z2-14ddf0d982db",
+    "user_roles": [
+        "USER"
+    ]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="api_v1_projects" class="panel-title">Project Registrations</h3></div><div class="panel-body"><div class="top-resource-description"><p>Project registration APIs for registered iF Studio developers. This API call must contain an OAuth2 bearer token from an iF User that has registered previously with iF Studio as a developer.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_api_v1_projects"><span class="parent"></span>/api/v1/projects</a> <span class="methods"><a href="#api_v1_projects_get"><span class="badge badge_get">get</span></a> <a href="#api_v1_projects_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_api_v1_projects" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#api_v1_projects_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all projects that are managed by an iF Studio registered developer.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#api_v1_projects_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>New project creation request by an iF Studio registered developer.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/api/v1/projects</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all projects that are managed by an iF Studio registered developer.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects_get_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects_get_request"><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_projects_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>found projects that have user as "ADMIN"</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Get Projects Response Schema",
+    "type" : "array",
+    "items" : {
+        "type": "object",
+        "properties": {
+            "org_id": {
+                "type": "string",
+                "description" : "UUID of the project/org"
+            },
+            "org_name": {
+                "type": "string",
+                "description" : "name of project/org"
+            },
+            "org_info": {
+                "type": "string",
+                "description" : "summary information about project/org"
+            },
+            "required": [ "org_id", "org_name", "org_info" ]
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+    {
+        "org_id" : "7b24cf41-58e9-4f27-b08c-8162adff2e34",
+        "org_name" : "test project",
+        "org_info" : "a test project to test project registration",
+    }
+]
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not a registered iF Studio developer</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>user does not manage any projects</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/api/v1/projects</h4></div><div class="modal-body"><div class="alert alert-info"><p>New project creation request by an iF Studio registered developer.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects_post_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects_post_request"><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Request Schema",
+    "type": "object",
+    "properties": {
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "org_roles": {
+            "type": "array",
+            "description": "custom roles defined for project/org",
+            "items": {
+                "type" : "object",
+                "properties" : {
+                    "role_name": {
+                        "type": "string",
+                        "description" : "name of custom role"
+                    },
+                    "role_description": {
+                        "type": "string",
+                        "description" : "informational description of this role"
+                    }                    
+                }
+            }
+        },
+        "required": [ "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "org_name" : "test project",
+  "org_info" : "a test project to test project registration",
+  "org_roles": [
+    {
+       "role_name": "SUSBCRIBER",
+       "role_description": "a subscriber for my test project"
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="api_v1_projects_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>project created successfully</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Response Schema",
+    "type": "object",
+    "properties": {
+        "org_id": {
+            "type": "string",
+            "description" : "UUID of the project/org"
+        },
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "required": [ "org_id", "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "org_id" : "7b24cf41-58e9-4f27-b08c-8162adff2e34",
+    "org_name" : "test project",
+    "org_info" : "a test project to test project registration",
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not a registered iF Studio developer</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="api_v1_projects__orgId_" class="panel-title">Project Management</h3></div><div class="panel-body"><div class="top-resource-description"><p>Project management APIs for registered iF Studio developers. This API call must contain an OAuth2 bearer token from an iF User with "ADMIN" role for the project (assigned automatically when user created a project, or when an existing admin explicitly invites another iF User as admin).</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_api_v1_projects__orgId_"><span class="parent"></span>/api/v1/projects/{orgId}</a> <span class="methods"><a href="#api_v1_projects__orgId__get"><span class="badge badge_get">get</span></a> <a href="#api_v1_projects__orgId__put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_api_v1_projects__orgId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#api_v1_projects__orgId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get project details</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#api_v1_projects__orgId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update registration details of a project.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/api/v1/projects/{orgId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get project details</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__get_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__get_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_projects__orgId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>found project details</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Request Schema",
+    "type": "object",
+    "properties": {
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "org_roles": {
+            "type": "array",
+            "description": "custom roles defined for project/org",
+            "items": {
+                "type" : "object",
+                "properties" : {
+                    "role_name": {
+                        "type": "string",
+                        "description" : "name of custom role"
+                    },
+                    "role_description": {
+                        "type": "string",
+                        "description" : "informational description of this role"
+                    }                    
+                }
+            }
+        },
+        "required": [ "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "org_name" : "test project",
+  "org_info" : "a test project to test project registration",
+  "org_roles": [
+    {
+       "role_name": "SUSBCRIBER",
+       "role_description": "a subscriber for my test project"
+    }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>project does not exists</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/api/v1/projects/{orgId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update registration details of a project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__put_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Request Schema",
+    "type": "object",
+    "properties": {
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "org_roles": {
+            "type": "array",
+            "description": "custom roles defined for project/org",
+            "items": {
+                "type" : "object",
+                "properties" : {
+                    "role_name": {
+                        "type": "string",
+                        "description" : "name of custom role"
+                    },
+                    "role_description": {
+                        "type": "string",
+                        "description" : "informational description of this role"
+                    }                    
+                }
+            }
+        },
+        "required": [ "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "org_name" : "test project",
+  "org_info" : "a test project to test project registration",
+  "org_roles": [
+    {
+       "role_name": "SUSBCRIBER",
+       "role_description": "a subscriber for my test project"
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="api_v1_projects__orgId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>project updated successfully</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Request Schema",
+    "type": "object",
+    "properties": {
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "org_roles": {
+            "type": "array",
+            "description": "custom roles defined for project/org",
+            "items": {
+                "type" : "object",
+                "properties" : {
+                    "role_name": {
+                        "type": "string",
+                        "description" : "name of custom role"
+                    },
+                    "role_description": {
+                        "type": "string",
+                        "description" : "informational description of this role"
+                    }                    
+                }
+            }
+        },
+        "required": [ "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "org_name" : "test project",
+  "org_info" : "a test project to test project registration",
+  "org_roles": [
+    {
+       "role_name": "SUSBCRIBER",
+       "role_description": "a subscriber for my test project"
+    }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>project does not exists</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="api_v1_projects__orgId__apps" class="panel-title">App Registrations</h3></div><div class="panel-body"><div class="top-resource-description"><p>Application registration APIs for registered iF Studio developers. This API call must contain an OAuth2 bearer token from an iF User with "ADMIN" role for the project (assigned automatically when user created a project, or when an existing admin explicitly invites another iF User as admin).</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_api_v1_projects__orgId__apps"><span class="parent"></span>/api/v1/projects/{orgId}/apps</a> <span class="methods"><a href="#api_v1_projects__orgId__apps_get"><span class="badge badge_get">get</span></a> <a href="#api_v1_projects__orgId__apps_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_api_v1_projects__orgId__apps" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#api_v1_projects__orgId__apps_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all applications registered for project</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#api_v1_projects__orgId__apps_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Register a new application with the project.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__apps_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/api/v1/projects/{orgId}/apps</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all applications registered for project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__apps_get_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__apps_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__apps_get_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_projects__orgId__apps_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>found registered applications</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Get Applications Response Schema",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "client_id": {
+                "type": "string",
+                "description" : "UUID assigned to application"
+            },
+            "app_type": {
+                "type": "string",
+                "description" : "type of application: must be backend_app"
+            },
+            "app_name": {
+                "type": "string",
+                "description" : "name of application"
+            },
+            "app_info": {
+                "type": "string",
+                "description" : "summary information about application"
+            },
+            "required": [ "client_id", "app_type", "app_name", "app_info" ]
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+    {
+        "client_id": "0a6f41c0-da71-4942-9de7-caadea5b5614",
+        "app_type": "backend_app",
+        "app_name": " backend app",
+        "app_info": "an updated test app for testing"
+    },
+    {
+        "client_id": "9bdb4345-cc71-4edf-9acb-68f75c17917c",
+        "app_type": "endpoint_app",
+        "app_name": "mobile app",
+        "app_info": "a mobile app to access endpoint"
+    }
+]</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no applications registered for project</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__apps_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/api/v1/projects/{orgId}/apps</h4></div><div class="modal-body"><div class="alert alert-info"><p>Register a new application with the project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__apps_post_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__apps_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__apps_post_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Application Registration Request Schema",
+    "type": "object",
+    "oneOf": [
+        { "$ref": "#/definitions/endpoint_app"},
+        { "$ref": "#/definitions/endpoint_app"}
+    ],
+    "definitions": {
+        "endpoint_app" : {
+            "description": "end point app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be endpoint_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "privacy_url" ]
+            }
+        },
+        "backend_app" : {
+            "description": "backend app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be backend_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "app_secret": {
+                    "type": "string",
+                    "description" : "password for app&#39;s OAuth token requests"
+                },
+                "app_key": {
+                    "type": "string",
+                    "description" : "a symmetric encryption key for Openid connect ID response validation"
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "app_secret", "app_key", "privacy_url" ]
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "app_type" : "backend_app",
+  "app_secret" : "Secret123",
+  "app_key" : "a.secret.key",
+  "redirect_urls" : [
+    "http://localhost:8080"
+    ],
+  "privacy_url" : "http://localhost:8080/privacy.html",
+  "app_name" : "test app",
+  "app_info" : "a test app for testing"
+}</code></pre></div><div class="tab-pane" id="api_v1_projects__orgId__apps_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>new application registered successfully</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Application Registration Response Schema",
+    "type": "object",
+    "properties": {
+        "client_id": {
+            "type": "string",
+            "description" : "UUID assigned to application"
+        },
+        "app_type": {
+            "type": "string",
+            "description" : "type of application: must be backend_app"
+        },
+        "app_name": {
+            "type": "string",
+            "description" : "name of application"
+        },
+        "app_info": {
+            "type": "string",
+            "description" : "summary information about application"
+        },
+        "required": [ "client_id", "app_type", "app_name", "app_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+    "client_id": "67eba65f-5f21-4c24-8652-635b7b9a876b",
+    "app_type": "backend_app",
+    "app_name": "test app",
+    "app_info": "a test app for testing"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>project does not exists</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="api_v1_projects__orgId__apps__clientId_" class="panel-title">App Management</h3></div><div class="panel-body"><div class="top-resource-description"><p>Application management APIs for registered iF Studio developers. This API call must contain an OAuth2 bearer token from an iF User with "ADMIN" role for the project (assigned automatically when user created a project, or when an existing admin explicitly invites another iF User as admin).</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_api_v1_projects__orgId__apps__clientId_"><span class="parent"></span>/api/v1/projects/{orgId}/apps/{clientId}</a> <span class="methods"><a href="#api_v1_projects__orgId__apps__clientId__get"><span class="badge badge_get">get</span></a> <a href="#api_v1_projects__orgId__apps__clientId__put"><span class="badge badge_put">put</span></a> <a href="#api_v1_projects__orgId__apps__clientId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_api_v1_projects__orgId__apps__clientId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#api_v1_projects__orgId__apps__clientId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get application details</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#api_v1_projects__orgId__apps__clientId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update registration details of an application.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#api_v1_projects__orgId__apps__clientId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete an application registration.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__apps__clientId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/api/v1/projects/{orgId}/apps/{clientId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get application details</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__apps__clientId__get_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__apps__clientId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__apps__clientId__get_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>clientId</strong>: <em>required (string)</em><p>UUID of application</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_projects__orgId__apps__clientId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>found application details</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Application Registration Request Schema",
+    "type": "object",
+    "oneOf": [
+        { "$ref": "#/definitions/endpoint_app"},
+        { "$ref": "#/definitions/endpoint_app"}
+    ],
+    "definitions": {
+        "endpoint_app" : {
+            "description": "end point app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be endpoint_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "privacy_url" ]
+            }
+        },
+        "backend_app" : {
+            "description": "backend app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be backend_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "app_secret": {
+                    "type": "string",
+                    "description" : "password for app&#39;s OAuth token requests"
+                },
+                "app_key": {
+                    "type": "string",
+                    "description" : "a symmetric encryption key for Openid connect ID response validation"
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "app_secret", "app_key", "privacy_url" ]
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "app_type" : "backend_app",
+  "app_secret" : "Secret123",
+  "app_key" : "a.secret.key",
+  "redirect_urls" : [
+    "http://localhost:8080"
+    ],
+  "privacy_url" : "http://localhost:8080/privacy.html",
+  "app_name" : "test app",
+  "app_info" : "a test app for testing"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>application does not exists</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__apps__clientId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent"></span>/api/v1/projects/{orgId}/apps/{clientId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update registration details of an application.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__apps__clientId__put_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__apps__clientId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__apps__clientId__put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>clientId</strong>: <em>required (string)</em><p>UUID of application</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Application Registration Request Schema",
+    "type": "object",
+    "oneOf": [
+        { "$ref": "#/definitions/endpoint_app"},
+        { "$ref": "#/definitions/endpoint_app"}
+    ],
+    "definitions": {
+        "endpoint_app" : {
+            "description": "end point app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be endpoint_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "privacy_url" ]
+            }
+        },
+        "backend_app" : {
+            "description": "backend app",
+            "type": "object",
+            "properties": {
+                "app_type": {
+                    "type": "string",
+                    "description" : "type of application: must be backend_app"
+                },
+                "app_name": {
+                    "type": "string",
+                    "description" : "name of application"
+                },
+                "app_info": {
+                    "type": "string",
+                    "description" : "summary information about application"
+                },
+                "redirect_urls": {
+                    "type": "array",
+                    "description" : "a list of registered redirect urls for token grant",
+                    "items" : {
+                        "type": "string"
+                    }
+                },
+                "app_secret": {
+                    "type": "string",
+                    "description" : "password for app&#39;s OAuth token requests"
+                },
+                "app_key": {
+                    "type": "string",
+                    "description" : "a symmetric encryption key for Openid connect ID response validation"
+                },
+                "privacy_url": {
+                    "type": "string",
+                    "description" : "a link to application&#39;s privacy policies"
+                },
+                "required": [ "app_type", "app_name", "app_info", "redirect_urls", "app_secret", "app_key", "privacy_url" ]
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "app_type" : "backend_app",
+  "app_secret" : "Secret123",
+  "app_key" : "a.secret.key",
+  "redirect_urls" : [
+    "http://localhost:8080"
+    ],
+  "privacy_url" : "http://localhost:8080/privacy.html",
+  "app_name" : "test app",
+  "app_info" : "a test app for testing"
+}</code></pre></div><div class="tab-pane" id="api_v1_projects__orgId__apps__clientId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>project updated successfully</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Registration Request Schema",
+    "type": "object",
+    "properties": {
+        "org_name": {
+            "type": "string",
+            "description" : "name of project/org"
+        },
+        "org_info": {
+            "type": "string",
+            "description" : "summary information about project/org"
+        },
+        "org_roles": {
+            "type": "array",
+            "description": "custom roles defined for project/org",
+            "items": {
+                "type" : "object",
+                "properties" : {
+                    "role_name": {
+                        "type": "string",
+                        "description" : "name of custom role"
+                    },
+                    "role_description": {
+                        "type": "string",
+                        "description" : "informational description of this role"
+                    }                    
+                }
+            }
+        },
+        "required": [ "org_name", "org_info" ]
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "org_name" : "test project",
+  "org_info" : "a test project to test project registration",
+  "org_roles": [
+    {
+       "role_name": "SUSBCRIBER",
+       "role_description": "a subscriber for my test project"
+    }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>application does not exists</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="api_v1_projects__orgId__apps__clientId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent"></span>/api/v1/projects/{orgId}/apps/{clientId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete an application registration.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#api_v1_projects__orgId__apps__clientId__delete_request" data-toggle="tab">Request</a></li><li><a href="#api_v1_projects__orgId__apps__clientId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="api_v1_projects__orgId__apps__clientId__delete_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>clientId</strong>: <em>required (string)</em><p>UUID of application</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="api_v1_projects__orgId__apps__clientId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>application deleted successfully</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>application does not exists</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#api_v1_register">Self Onboard</a></li><li><a href="#api_v1_projects">Project Registrations</a></li><li><a href="#api_v1_projects__orgId_">Project Management</a></li><li><a href="#api_v1_projects__orgId__apps">App Registrations</a></li><li><a href="#api_v1_projects__orgId__apps__clientId_">App Management</a></li></ul></div></div></div></div></body></html>
