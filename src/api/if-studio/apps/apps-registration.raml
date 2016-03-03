@@ -9,7 +9,7 @@ schemas:
       AppRegistrationResponse: !include AppRegistrationResponse.json
       GetAppsResponse: !include GetAppsResponse.json
 
-/api/v1/projects/{orgId}/apps:
+/projects/{orgId}/apps:
     displayName: App Registrations
     uriParameters:
         orgId:
@@ -77,7 +77,7 @@ schemas:
             404:
                 description: project does not exists
 
-/api/v1/projects/{orgId}/apps/{clientId}:
+/projects/{orgId}/apps/{clientId}:
     displayName: App Management
     uriParameters:
         orgId:
