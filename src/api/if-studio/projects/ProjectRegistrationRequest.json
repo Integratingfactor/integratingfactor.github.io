@@ -26,7 +26,6 @@
                     }                    
                 }
             }
-        },
-        "required": [ "org_name", "org_info" ]
+        }
     }
 }

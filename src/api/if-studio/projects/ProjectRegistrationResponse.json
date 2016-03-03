@@ -13,7 +13,6 @@
         "org_info": {
             "type": "string",
             "description" : "summary information about project/org"
-        },
-        "required": [ "org_id", "org_name", "org_info" ]
+        }
     }
 }

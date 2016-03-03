@@ -5,9 +5,9 @@ protocols: [ HTTPS ]
 baseUri: https://dev-portal-service.appspot.com/api/v1
 mediaType: application/json
 schemas:
-    - AppRegistration:              !include AppRegistrationRequest.json
-      AppRegistrationResponse:      !include AppRegistrationResponse.json
-      GetAppsResponse:              !include GetAppsResponse.json
+    - AppRegistration: !include AppRegistrationRequest.json
+      AppRegistrationResponse: !include AppRegistrationResponse.json
+      GetAppsResponse: !include GetAppsResponse.json
 
 /api/v1/projects/{orgId}/apps:
     displayName: App Registrations
