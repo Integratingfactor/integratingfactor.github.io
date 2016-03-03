@@ -4,7 +4,7 @@
 	app.directive('homeTab', function(IdpClient, TabTracker){
 		return {
 			restrict: 'E',
-			templateUrl: 'home-tab.html',
+			templateUrl: '/site/home/home-tab.html',
 			controller: function($log){
 				this.myTab = 1;
 				this.isActive = function() {
@@ -18,14 +18,14 @@
 	app.directive('homeTabGuest', function(IdpClient){
 		return {
 			restrict: 'E',
-			templateUrl: 'home-tab-guest.html'
+			templateUrl: '/site/home/home-tab-guest.html'
 		};
 	});
 
 	app.directive('homeTabUser', function(IdpClient){
 		return {
 			restrict: 'E',
-			templateUrl: 'home-tab-user.html'
+			templateUrl: '/site/home/home-tab-user.html'
 		};
 	});
 })();

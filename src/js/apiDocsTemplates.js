@@ -4,7 +4,7 @@
     app.directive('apiDocumentation', function(){
         return {
             restrict: 'E',
-            templateUrl: 'api-documentation.html',
+            templateUrl: '/site/api/api-documentation.html',
         };
     });
 })();

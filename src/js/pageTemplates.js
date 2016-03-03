@@ -32,7 +32,7 @@
 	app.directive('pageHeader', function(TabTracker){
 		return {
 			restrict: 'E',
-			templateUrl: 'page-header.html',
+			templateUrl: '/site/common/page-header.html',
 			controller: function($log){
 				this.isSet = function(checkTab) {
 					return TabTracker.getCurrTab() === checkTab;
@@ -51,7 +51,7 @@
 	app.directive('pageFooter', function(){
 		return {
 			restrict: 'E',
-			templateUrl: 'page-footer.html'
+			templateUrl: '/site/common/page-footer.html'
 		};
 	});
 })();

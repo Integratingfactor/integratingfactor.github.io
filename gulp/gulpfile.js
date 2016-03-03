@@ -150,7 +150,7 @@ gulp.task('styles', function(){
     addRootSlash: false
   };
 
-  return gulp.src('../src/main.scss')
+  return gulp.src('../src/scss/main.scss')
   	.pipe(wiredep())
   	.pipe(inject(injectGlobalFiles, injectGlobalOptions))
   	.pipe(inject(injectAppFiles, injectAppOptions))
@@ -164,7 +164,8 @@ gulp.task('html', ['apidoc', 'styles', 'js', 'images'], function() {
     '../js/*.js']);
 
   var injectOptions = {
-    addRootSlash: false,
+    // addRootSlash: false,
+    addRootSlash: true,
     ignorePath: ['../']
   };
 
