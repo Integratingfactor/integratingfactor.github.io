@@ -1,0 +1,36 @@
+#%RAML 0.8
+title: iF Studio Onbaording
+version: 1
+protocols: [ HTTPS ]
+baseUri: https://dev-portal-service.appspot.com/api/v1
+mediaType: application/json
+schemas:
+    - OnboardResponse: !include OnboardResponse.json
+
+/register:
+    displayName: Self Onboard
+    description: |
+        Self Onboarding API by an iF User for developer program. This API call must contain
+        an OAuth2 bearer token from an iF User that can identify the user account that is requesting
+        onbaording with developer program.
+
+    put:
+        description: |
+            Self onboarding request by an Integratingfactor.com user for developer program. There is no request body.
+        headers:
+            Authorization:
+                description: Authorization header with OAuth2 bearer token from iF IDP service
+                example: Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb
+        responses:
+            200:
+                description: onborading success
+                body:
+                    application/json:
+                        schema: OnboardResponse
+                        example: !include onboard200Example.json
+            401:
+                description: Bearer token authentication failed
+                body:
+                    application/json:
+                        example: !include ../common/401Example.json
+
