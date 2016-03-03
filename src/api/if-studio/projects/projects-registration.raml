@@ -8,6 +8,7 @@ schemas:
     - ProjectRegistrationRequest:   !include ProjectRegistrationRequest.json
       ProjectRegistrationResponse:  !include ProjectRegistrationResponse.json
       GetProjectsResponse:          !include GetProjectsResponse.json
+      ProjectRegistrationDetails:   !include ProjectDetails.json
 
 /projects:
     displayName: Project Registrations
@@ -92,8 +93,8 @@ schemas:
                 description: found project details
                 body:
                     application/json:
-                        schema: ProjectRegistrationRequest
-                        example: !include projectRegistrationExample.json
+                        schema: ProjectRegistrationDetails
+                        example: !include projectDetailsExample.json
             401:
                 description: Bearer token authentication failed
                 body:
@@ -123,8 +124,8 @@ schemas:
                 description: project updated successfully
                 body:
                     application/json:
-                        schema: ProjectRegistrationRequest
-                        example: !include projectRegistrationExample.json
+                        schema: ProjectRegistrationResponse
+                        example: !include projectRegistration201Example.json
             401:
                 description: Bearer token authentication failed
                 body:
