@@ -25,7 +25,7 @@
       "type": "string",
       "description": "password for app's OAuth token requests"
     },
-    "app_key": {
+    "encryption_key": {
       "type": "string",
       "description": "a symmetric encryption key for Openid connect ID response validation"
     },

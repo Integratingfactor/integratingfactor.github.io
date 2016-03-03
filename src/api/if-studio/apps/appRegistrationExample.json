@@ -1,7 +1,7 @@
 {
   "app_type" : "backend_app",
   "app_secret" : "Secret123",
-  "app_key" : "a.secret.key",
+  "encryption_key" : "a.secret.key",
   "redirect_urls" : [
     "http://localhost:8080"
     ],
