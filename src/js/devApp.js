@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('devPortal', ['page-templates', 'home-templates', 'projects-templates', 'apps-templates', 'idp-oauth-client']);
+	var app = angular.module('devPortal', ['page-templates', 'home-templates', 'projects-templates', 'apps-templates', 'idp-oauth-client', 'if-studio-client']);
 
 	app.controller('DevPortalController', function(IdpClient, $log){
 

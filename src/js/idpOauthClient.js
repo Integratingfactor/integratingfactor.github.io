@@ -16,10 +16,12 @@
 			var temp = $window.sessionStorage.userInfo;
 			if (temp && typeof temp != "undefined" && temp != "null") {
 				userInfo = JSON.parse(temp);
+				token = JSON.parse($window.sessionStorage.token);
 				$log.log('user info retreived from session storage');
 			} else {
 				$log.log('user info not found in session storage');
-				$window.sessionStorage.userInfo = JSON.stringify(userInfo);					
+				$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+				$window.sessionStorage.token = JSON.stringify(token);
 			}
 		} catch (e) {
 			$log.log('session storage not supported', e);
@@ -47,18 +49,20 @@
 			  .success(function (data) {
 			    $log.log("validated token successfully");
 			    userInfo=data;
+			    token=accessToken;
 				if (isSessionStorageSupported) {
 					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+					$window.sessionStorage.token = JSON.stringify(token);
 				}
-			    token=accessToken;
 			  })
 			  .error(function (req, status, error) {
 			    $log.log("Failed to validate token: ", status, error);
 			    userInfo=null;
+			    token=null;
 				if (isSessionStorageSupported) {
 					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
+					$window.sessionStorage.token = JSON.stringify(token);
 				}
-			    token=null;
 			  });
 			}
 		}
