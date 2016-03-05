@@ -61,8 +61,8 @@
 		{
 			title: '#BYOI',
 			intro: 'Integratingfactor.com framework is built with "Bring Your Own Identity" model...',
-			body: '<p> What that means is that end users should not have to create multiple difference accounts to access multiple different applications. Also, applications should be able work together for a single user, with apporpriate authorizations from the end user.'+
-			'<p>This translates to following end user benefits:<li>easier to adopt string password because do not have to remember 10s of different passwords</il>'+
+			body: '<p> What that means is that end users should not have to create multiple different accounts to access multiple different applications. Also, applications should be able work together for a single user, with apporpriate authorizations from the end user.'+
+			'<p>This translates to following end user benefits:<li>easier to adopt strong password because do not have to remember 10s of different passwords</il>'+
 			'<li>centralized multi-factor authentication for all services, reducing/mitigating account hijacking and spoofing</li>'+
 			'<li>simplified user experience with single identity to access different applications</li></p>' +
 			'<p>Application developer benefits:' +
