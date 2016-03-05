@@ -1,19 +1,13 @@
-<div class="cover-container" align="left" ng-show="projects.currState('update')">
-    <form name="newProject" ng-submit="projects.submitProjectUpdate()" novalidate>
-        <p ng-show="projects.currProject.org_name" class="lead">Name: {{projects.currProject.org_name}}</p>
-        <p ng-show="projects.currProject.org_info"><strong>Description:</strong><br>
-        {{projects.currProject.org_info}}</p>
-        <p ng-show="projects.currProject.org_roles">Custom Roles: {{projects.currProject.org_roles}}</p>
-
+<div class="cover-container" ng-show="projects.currState('update')">
+    <h1>{{projects.currProject.org_name}}</h1>
+    <hr>
+    <form name="updateProject" align="left" ng-submit="projects.submitProjectUpdate()" novalidate>
         <h4>Update project:</h4>
         <div class="form-group">
             <input ng-model="projects.currProject.org_name" type="text" class="form-control"  value="{{projects.currProject.org_name}}" ng-required="required">
         </div>
         <div class="form-group">
             <input ng-model="projects.currProject.org_info" type="textarea" class="form-control" value="{{projects.currProject.org_info}}" ng-required="required">
-        </div>
-        <div class="form-group">
-            <input ng-model="projects.curr_roles" type="text" ng-keyup="projects.convertRoles()" value="form-control" value="{{projects.curr_roles}}">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success pull-left">Update</button>
