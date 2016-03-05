@@ -28,6 +28,17 @@
 		        	ref.curr_roles = '';
 		        };
 
+		        this.removeProject = function(index) {
+		        	$log.log("removing project", ref.myProjects[index].org_id);
+		        	IfStudioClient.removeProject(ref.myProjects[index].org_id, function(data){
+		        		$log.log("removed project", data);
+			        	ref.reset();
+		        	}, function(error){
+		        		$log.log("Failed to removed project", error);
+			        	ref.reset();
+		        	});
+
+		        }
 
 		        this.startProjectUpdate = function(index) {
 		        	ref.state = 'update';

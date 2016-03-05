@@ -5,12 +5,14 @@
         <td>Project Name</td>
         <td>Project Info</td>
         <td></td>
+        <td></td>
     </thead>
     <tbody ng-repeat="project in projects.myProjects track by $index">
         <tr>
             <td>{{project.org_name}}</td>
             <td>{{project.org_info}}</td>
             <td><button class="btn btn-sm btn-warning pull-right" ng-click="projects.startProjectUpdate($index)">Manage</button></td>
+            <td><button class="btn btn-sm btn-danger pull-right" ng-click="projects.removeProject($index)">Delete</button></td>
         </tr>            
     </tbody>
     </table>
