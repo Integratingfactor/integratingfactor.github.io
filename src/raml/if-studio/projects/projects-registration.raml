@@ -138,3 +138,25 @@ schemas:
                         example: !include ../common/403Example.json
             404:
                 description: project does not exists
+    delete:
+        description: |
+            Delete an existing project
+        headers:
+            Authorization:
+                description: Authorization header with OAuth2 bearer token from iF IDP service
+                example: Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb
+        responses:
+            204:
+                description: project deleted
+            401:
+                description: Bearer token authentication failed
+                body:
+                    application/json:
+                        example: !include ../common/401Example.json
+            403:
+                description: User is not an ADMIN for the project
+                body:
+                    application/json:
+                        example: !include ../common/403Example.json
+            404:
+                description: project does not exists
