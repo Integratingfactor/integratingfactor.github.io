@@ -1,7 +1,36 @@
 (function(){
-	var app = angular.module('projects-templates', ['page-templates']);
+	var app = angular.module('projects-templates', ['idp-oauth-client','page-templates']);
 
-	app.directive('projectsTab', function(IfStudioClient, TabTracker){
+    app.factory('IfProjects', function(IdpClient,IfStudioClient, $log){
+        var ref = this;
+        this.myProjects = [];
+        return {
+        	getAllProjects : function() {
+        		return ref.myProjects;
+        	},
+            loadAllProjects : function(callback) {
+                if(!IdpClient.isAuthorized('USER', 'devnet-alpha.integratingfactor.com')) {
+                    return;
+                };
+                IfStudioClient.getAllProjects(function(data){
+                    $log.log("loaded projects", data);
+                    ref.myProjects = data;
+                    callback();
+                }, function(status){
+                    $log.log("failed to get projects", status);
+                    ref.myProjects = [];
+                    if (ref.attempt <= 2) {
+                        $log.log("reattempting");
+                        ref.attempt += 1;
+                        ref.loadAllProjects();
+                    };
+                    callback();
+                });
+            }
+        };
+    });
+
+	app.directive('projectsTab', function(IfProjects, IdpClient,IfStudioClient, TabTracker){
 		return {
 			restrict: 'E',
 			templateUrl: '/site/projects/projects-tab.html',
@@ -11,7 +40,7 @@
 				this.isActive = function() {
 					return this.myTab === TabTracker.getCurrTab();
 				};
-		        this.myProjects = [];
+		        this.myProjects = {};
 		        this.currProject = {};
 		        this.myApps = [];
 		        this.currApp = {};
@@ -97,18 +126,12 @@
 		        };
 
 		        this.loadAllProjects = function() {
-		            IfStudioClient.getAllProjects(function(data){
-		            	$log.log("loaded projects", data);
-		                ref.myProjects = data;
-		            }, function(status){
-		                $log.log("failed to get projects", status);
-		                ref.myProjects = [];
-		                if (ref.attempt <= 2) {
-		                	$log.log("reattempting");
-		                	ref.attempt += 1;
-		                	ref.loadAllProjects();
-		                }
-		            });
+		        	if(!IdpClient.isAuthorized('USER', 'devnet-alpha.integratingfactor.com')) {
+		        		return;
+		        	};
+		        	IfProjects.loadAllProjects(function() {
+		        		ref.myProjects = IfProjects.getAllProjects();
+		        	});
 		        };
 
 		        this.loadAllProjects();
