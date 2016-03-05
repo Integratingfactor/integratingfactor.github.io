@@ -54,6 +54,7 @@
 					$window.sessionStorage.userInfo = JSON.stringify(userInfo);
 					$window.sessionStorage.token = JSON.stringify(token);
 				}
+				returnTo();
 			  })
 			  .error(function (req, status, error) {
 			    $log.log("Failed to validate token: ", status, error);

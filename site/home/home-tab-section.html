@@ -1,0 +1,13 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-repeat="sectionItem in home.getSectionItems() track by $index">
+  <div class="product-box">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+      <div class="intro-heading inner" ng-bind-html="section.getTitle($index) | sanitize">
+      </div>
+      <div ng-bind-html="section.getIntro($index) | sanitize"></div>
+    </a>
+    <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index}}">
+      <div class="intro-body inner" ng-bind-html="section.getBody($index) | sanitize">
+      </div>
+    </div>
+  </div>
+</div>
