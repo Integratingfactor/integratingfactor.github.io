@@ -59,6 +59,18 @@
 
 	var homeSectionItems = [
 		{
+			title: '#ProtectNotHide',
+			intro: 'Introducing Web Security as a Service ...',
+			body: '<p>Develop, build and deploy web/cloud connected applications with enterprise grade security that scales as your application and customer base grows.</p>'+
+			'<p>Integratingfactor.com IDP service provides following Web Security as a Service offerings'+
+			'<li>AuthN/AuthZ framework using OAuth2</il>'+
+			'<li>RBAC customized to your application needs</li>'+
+			'<li>Usage throttling customized to your application needs</li>'+
+			'<li>Secured user on-boarding and multi-factor authentication</li>'+
+			'<li>Protection against liability from security breach</li>'+
+			'</p><p class="lead">Reduce your liability, increase your profitability and build secured products faster with no upfront cost.</p>'
+		},
+		{
 			title: '#BYOI',
 			intro: 'Integratingfactor.com framework is built with "Bring Your Own Identity" model...',
 			body: '<p> What that means is that end users should not have to create multiple different accounts to access multiple different applications. Also, applications should be able work together for a single user, with apporpriate authorizations from the end user.'+
@@ -70,18 +82,6 @@
 			'<li>no additional federation work required to implement inter-operability between 3rd party applications' +
 			'<li>applications have no additional cost to leverage continuous imporovements in security features for user identity management</li>'+
 			'</p>'
-		},
-		{
-			title: '#ProtectNotHide',
-			intro: 'Introducing Web Security as a Service ...',
-			body: '<p>Develop, build and deploy web/cloud connected applications with enterprise grade security that scales as your application and customer base grows.</p>'+
-			'<p>Integratingfactor.com IDP service provides following Web Security as a Service offerings'+
-			'<li>AuthN/AuthZ framework using OAuth2</il>'+
-			'<li>RBAC customized to your application needs</li>'+
-			'<li>Usage throttling customized to your application needs</li>'+
-			'<li>Secured user on-boarding and multi-factor authentication</li>'+
-			'<li>Protection against liability from security breach</li>'+
-			'</p><p class="lead">Reduce your liability, increase your profitability and build secured products faster with no upfront cost.</p>'
 		},
 		{
 			title: 'Free Projects <button disabled class="btn btn-success pull-right">Coming soon</button>',
