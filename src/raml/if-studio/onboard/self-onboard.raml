@@ -89,7 +89,7 @@ schemas:
                 type: string
         put:
             description: |
-                Onboard another Integratingfactor.com user in a project.
+                Assign roles to an iF User in a project.
             headers:
                 Authorization:
                     description: Authorization header with OAuth2 bearer token from iF IDP service
@@ -116,7 +116,7 @@ schemas:
                     description: no registered project or account
         delete:
             description: |
-                Remove another Integratingfactor.com user from a project
+                Remove an iF User from a project
             headers:
                 Authorization:
                     description: Authorization header with OAuth2 bearer token from iF IDP service
