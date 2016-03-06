@@ -1,5 +1,5 @@
 {
-    "title": "Onboarding Registration Schema",
+    "title": "Self Onboarding Registration Schema",
     "type": "object",
     "properties": {
         "account_id": {
