@@ -204,7 +204,7 @@
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
     "error": "you are not a member of this org"
 }
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_register__orgId__accounts__accountId_"><span class="parent">/register/{orgId}/accounts</span>/{accountId}</a> <span class="methods"><a href="#register__orgId__accounts__accountId__put"><span class="badge badge_put">put</span></a> <a href="#register__orgId__accounts__accountId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_register__orgId__accounts__accountId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#register__orgId__accounts__accountId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Onboard another Integratingfactor.com user in a project.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#register__orgId__accounts__accountId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Remove another Integratingfactor.com user from a project</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="register__orgId__accounts__accountId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/register/{orgId}/accounts</span>/{accountId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Onboard another Integratingfactor.com user in a project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register__orgId__accounts__accountId__put_request" data-toggle="tab">Request</a></li><li><a href="#register__orgId__accounts__accountId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register__orgId__accounts__accountId__put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>accountId</strong>: <em>required (string)</em><p>UUID of another iF User</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_register__orgId__accounts__accountId_"><span class="parent">/register/{orgId}/accounts</span>/{accountId}</a> <span class="methods"><a href="#register__orgId__accounts__accountId__put"><span class="badge badge_put">put</span></a> <a href="#register__orgId__accounts__accountId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_register__orgId__accounts__accountId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#register__orgId__accounts__accountId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Assign roles to an iF User in a project.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#register__orgId__accounts__accountId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Remove an iF User from a project</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="register__orgId__accounts__accountId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/register/{orgId}/accounts</span>/{accountId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Assign roles to an iF User in a project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register__orgId__accounts__accountId__put_request" data-toggle="tab">Request</a></li><li><a href="#register__orgId__accounts__accountId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register__orgId__accounts__accountId__put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>accountId</strong>: <em>required (string)</em><p>UUID of another iF User</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
     "title": "User Onboarding Registration Schema",
     "type": "object",
     "properties": {
@@ -227,10 +227,148 @@
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
     "error": "you are not a member of this org"
 }
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="register__orgId__accounts__accountId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/register/{orgId}/accounts</span>/{accountId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove another Integratingfactor.com user from a project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register__orgId__accounts__accountId__delete_request" data-toggle="tab">Request</a></li><li><a href="#register__orgId__accounts__accountId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register__orgId__accounts__accountId__delete_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>accountId</strong>: <em>required (string)</em><p>UUID of another iF User</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="register__orgId__accounts__accountId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>removal success</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="register__orgId__accounts__accountId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/register/{orgId}/accounts</span>/{accountId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove an iF User from a project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register__orgId__accounts__accountId__delete_request" data-toggle="tab">Request</a></li><li><a href="#register__orgId__accounts__accountId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register__orgId__accounts__accountId__delete_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li><li><strong>accountId</strong>: <em>required (string)</em><p>UUID of another iF User</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul></div><div class="tab-pane" id="register__orgId__accounts__accountId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>removal success</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
     "error": "user not authenticated"
 }
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
     "error": "you are not a member of this org"
 }
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#register">Self Onboard</a></li><li><a href="#register__orgId__accounts">User Onboard</a></li></ul></div></div></div></div></body></html>
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or account</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="invites__orgId_" class="panel-title">User Inivitations</h3></div><div class="panel-body"><div class="top-resource-description"><p>User invitation APIs for inviting other users based on their public identities (e.g. email). This API call must contain an OAuth2 bearer token from an iF User with "ADMIN" role for the project (assigned automatically when user created a project, or when an existing admin explicitly invites/adds another iF User as admin).</p><p><strong>If there is already an iF User account with specified user identity, then account is onboarded with provided roles immediately and no pending invitation is kept.</strong></p><p>If there is no iF User account with specified identity, then invitation is kept around as pending invitation until an iF User account is created with the specified identity.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_invites__orgId_"><span class="parent"></span>/invites/{orgId}</a> <span class="methods"><a href="#invites__orgId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_invites__orgId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#invites__orgId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Query all pending invitations in a project with specified role.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="invites__orgId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/invites/{orgId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Query all pending invitations in a project with specified role.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#invites__orgId__get_request" data-toggle="tab">Request</a></li><li><a href="#invites__orgId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="invites__orgId__get_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Query Parameters</h3><ul><li><strong>role</strong>: <em>(string)</em><p>role type to query, should be one of USER | ADMIN | project defined custom role</p><p><strong>Example</strong>:</p><pre>?role=USER</pre></li></ul></div><div class="tab-pane" id="invites__orgId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>found pending invitations with specified role</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Invitation Roles Schema",
+    "type" : "array",
+    "items" : {
+        "title": "Invitation Roles Schema",
+        "type": "object",
+        "properties": {
+            "id_type": {
+                "description": "Identity type, must be username | email",
+                "type": "string"
+            },
+            "id_key": {
+                "description": "actual identity key of the user",
+                "type": "string"
+            },
+            "user_roles": {
+                "type": "array",
+                "description": "roles assigned to user for the org: cab be USER/ADMIN or any of the custom roles defined for project",
+                "items": {
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+  "id_key" : "test@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER"
+    ]
+  },
+  {
+  "id_key" : "admin@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER",
+    "ADMIN"
+    ]
+  }
+]</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or pending invitations</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_invites__orgId__add"><span class="parent">/invites/{orgId}</span>/add</a> <span class="methods"><a href="#invites__orgId__add_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_invites__orgId__add" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#invites__orgId__add_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Add an invitation for the project.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="invites__orgId__add_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/invites/{orgId}</span>/add</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add an invitation for the project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#invites__orgId__add_put_request" data-toggle="tab">Request</a></li><li><a href="#invites__orgId__add_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="invites__orgId__add_put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Invitation Roles Schema",
+    "type" : "array",
+    "items" : {
+        "title": "Invitation Roles Schema",
+        "type": "object",
+        "properties": {
+            "id_type": {
+                "description": "Identity type, must be username | email",
+                "type": "string"
+            },
+            "id_key": {
+                "description": "actual identity key of the user",
+                "type": "string"
+            },
+            "user_roles": {
+                "type": "array",
+                "description": "roles assigned to user for the org: cab be USER/ADMIN or any of the custom roles defined for project",
+                "items": {
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+  "id_key" : "test@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER"
+    ]
+  },
+  {
+  "id_key" : "admin@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER",
+    "ADMIN"
+    ]
+  }
+]</code></pre></div><div class="tab-pane" id="invites__orgId__add_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>invitations added</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_invites__orgId__remove"><span class="parent">/invites/{orgId}</span>/remove</a> <span class="methods"><a href="#invites__orgId__remove_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_invites__orgId__remove" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#invites__orgId__remove_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Remove an invitation from the project.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="invites__orgId__remove_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/invites/{orgId}</span>/remove</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove an invitation from the project.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#invites__orgId__remove_put_request" data-toggle="tab">Request</a></li><li><a href="#invites__orgId__remove_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="invites__orgId__remove_put_request"><h3>URI Parameters</h3><ul><li><strong>orgId</strong>: <em>required (string)</em><p>UUID of project</p></li></ul><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Authorization header with OAuth2 bearer token from iF IDP service</p><p><strong>Example</strong>:</p><pre>Bearer 0cb3887a-7f68-490a-bf15-c89aff96a6fb</pre></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "title": "Project Invitation Roles Schema",
+    "type" : "array",
+    "items" : {
+        "title": "Invitation Roles Schema",
+        "type": "object",
+        "properties": {
+            "id_type": {
+                "description": "Identity type, must be username | email",
+                "type": "string"
+            },
+            "id_key": {
+                "description": "actual identity key of the user",
+                "type": "string"
+            },
+            "user_roles": {
+                "type": "array",
+                "description": "roles assigned to user for the org: cab be USER/ADMIN or any of the custom roles defined for project",
+                "items": {
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+  "id_key" : "test@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER"
+    ]
+  },
+  {
+  "id_key" : "admin@gmail.com",
+  "id_type" : "email",
+  "user_roles" : [
+    "USER",
+    "ADMIN"
+    ]
+  }
+]</code></pre></div><div class="tab-pane" id="invites__orgId__remove_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>invitations removed</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><p>Bearer token authentication failed</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "user not authenticated"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>User is not an ADMIN for the project</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+    "error": "you are not a member of this org"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>no registered project or pending invitations</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#register">Self Onboard</a></li><li><a href="#register__orgId__accounts">User Onboard</a></li><li><a href="#invites__orgId_">User Inivitations</a></li></ul></div></div></div></div></body></html>
