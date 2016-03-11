@@ -1,0 +1,17 @@
+<div ng-show="search.isDocumentation()">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-repeat="sectionItem in search.searchResults">
+    <div class="product-box">
+      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-faq-{{$index}}" aria-expanded="false" aria-controls="collapse-faq-{{$index}}" style='text-decoration:none;'>
+        <!-- <div class="intro-heading inner" ng-bind-html="sectionItem.question | sanitize"></div> -->
+        <div class="intro-heading inner">{{sectionItem.question}}</div>
+        <p><!-- <div ng-bind-html="sectionItem.intro | sanitize"></div> -->... {{sectionItem.intro}} ...</p>
+      </a>
+      <div id="collapse-faq-{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-faq-{{$index}}">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-faq-{{$index}}" aria-expanded="false" aria-controls="collapse-faq-{{$index}}" style='text-decoration:none;'><div class="intro-body inner" ng-bind-html="sectionItem.answer | sanitize"><
+        </div>
+        <!-- <div>{{sectionItem}}</div> -->
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
