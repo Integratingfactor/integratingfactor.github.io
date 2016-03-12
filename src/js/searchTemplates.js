@@ -29,7 +29,8 @@
                 this.search = function() {
                     if (!self.searchTxt) return;
                     if (self.isDocumentation()) {
-                        self.searchDocumentation();
+                        // self.searchDocumentation();
+                        self.searchCode();
                     } else {
                         self.searchIssues();
                     }
@@ -38,7 +39,7 @@
                     if (!self.searchTxt) return;
                     // GithubFaqClient.queryInIssues(self.searchTxt, self.faqRepo, function(data){
                     GithubFaqClient.queryInRepo(self.searchTxt, self.faqRepo, function(data){
-                        // $log.log("got search count", data.total_count,data);
+                        $log.log("got search count", data.total_count,data);
                         if (data.total_count == 0) {
                             self.searchResults = [{question: "no match found"}]
                             return;
@@ -58,6 +59,41 @@
                             }, function(error){
                                 $log.log("Failed to fetch FAQ item", error);
                             });
+                        }
+                    }, function(error){
+                        $log.log("Failed to search", error);
+                        self.searchResults = [];
+                    });
+                };
+
+                this.searchCode = function() {
+                    if (!self.searchTxt) return;
+                    // GithubFaqClient.queryInIssues(self.searchTxt, self.faqRepo, function(data){
+                    GithubFaqClient.queryInRepo(self.searchTxt, self.faqRepo, function(data){
+                        // $log.log("got search count", data.total_count,data);
+                        if (data.total_count == 0) {
+                            self.searchResults = [{question: "no match found"}]
+                            return;
+                        }
+                        // clear out old search results
+                        self.searchResults = [];
+                        for (item in data.items) {
+                            var faq = data.items[item];
+                            $log.log("using FAQ item", faq);
+                            self.searchResults.push({question: faq.text_matches[0].fragment,
+                                url: faq.html_url,
+                                intro: 'more'});
+                            // var intro = data.items[item].text_matches[0].fragment;
+                            // GithubFaqClient.getFaqItem(data.items[item].git_url, function(data){
+                            //     // $log.log("got FAQ item", data);
+                            //     var decoded = JSON.parse(atob(data.content));
+                            //     // decoded.intro = intro;
+                            //     decoded.intro = "answer";
+                            //     $log.log("decoded item is", decoded);
+                            //     self.searchResults.push(decoded);
+                            // }, function(error){
+                            //     $log.log("Failed to fetch FAQ item", error);
+                            // });
                         }
                     }, function(error){
                         $log.log("Failed to search", error);
