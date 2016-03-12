@@ -80,9 +80,9 @@
                         for (item in data.items) {
                             var faq = data.items[item];
                             $log.log("using FAQ item", faq);
-                            self.searchResults.push({question: faq.text_matches[0].fragment,
+                            self.searchResults.push({question: faq.name,
                                 url: faq.html_url,
-                                intro: 'more'});
+                                intro: faq.text_matches[0].fragment});
                             // var intro = data.items[item].text_matches[0].fragment;
                             // GithubFaqClient.getFaqItem(data.items[item].git_url, function(data){
                             //     // $log.log("got FAQ item", data);
@@ -140,6 +140,9 @@
                     html = html.concat('</pre>');
                     return html;
                 };
+                this.searchTxt = "authentication";
+                this.searchCode();
+                this.searchTxt = null;
             },
             controllerAs: 'search'
         };
