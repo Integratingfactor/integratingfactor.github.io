@@ -1,7 +1,7 @@
 (function(){
 	var app = angular.module('idp-oauth-client', []);
 	app.factory('IdpClient', function($log, $window, $http, $httpParamSerializerJQLike){
-		var clientId='4ca8cbf2-17e4-4262-a5d5-fefc77757325';
+		var clientId='b80a9eb3-8b8e-46ef-ad61-77309f9bedb4';
 		var clientSecret='';
 		var clientAuth=btoa(clientId+':'+clientSecret);
 		var idpHost='https://if-idp.appspot.com';
