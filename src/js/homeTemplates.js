@@ -87,12 +87,7 @@
 		{
 			title: 'Free Projects <button disabled class="btn btn-success pull-right">Coming soon</button>',
 			intro: 'Developers can create free projects with following features...',
-			body:'<table class="table"><tbody><tr><td>2 free Endpoint app registrations</td><td>Endpoint apps are the clients in your project distributed to end users to access your application</td></tr><tr><td>1 free Backend app registration</td><td>Backend apps are the services in your project that endpoint clients interact with</td></tr><tr><td>1k registered users</td><td>Upto 1000 users can be registered for free with each project</td></tr><tr><td>Custom user roles</td><td>Projects can define custom roles for users, in addition to standard roles</td></tr></tbody></table>'
-		},
-		{
-			title: 'Premium Projects<button disabled class="btn btn-success pull-right">Coming soon</button>',
-			intro: 'Upgrade projects as they grow for following premium features...',
-			body: '<table class="table"><tbody><tr><td>additional Endpoint app registrations</td><td>$1 / mo / app</td></tr><tr><td>additional Backend app registrations</td><td>$10 / mo / app</td></tr><tr><td>additional active users</td><td>$10 / mo / 1k users</td></tr><tr><td>Service app registration for user management</td><td>$100 / mo</td></tr></tbody></table>'
+			body:'<table class="table"><tbody><tr><td>2 free Endpoint app registrations</td><td>Endpoint apps are the clients in your project distributed to end users to access your application (e.g. mobile apps, javascript clients)</td></tr><tr><td>1 free Backend app registration</td><td>Backend apps are the services in your project that endpoint clients interact with</td></tr><tr><td>1k on-boarded users</td><td>Upto 1000 users can be on-boarded for free with each project</td></tr><tr><td>Custom user roles</td><td>Projects can define custom roles for users, in addition to standard roles</td></tr></tbody></table>'
 		}
 	]
 })();
